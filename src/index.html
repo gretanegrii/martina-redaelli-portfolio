@@ -4,10 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Martina Redaelli - Artista</title>
+
+    <link rel="stylesheet" href="./css/index.css" />
   </head>
 
   <body>
-    <header class="hero">
+    <header class="hero" id="top">
       <p class="tagline">ARTISTA STUDENTESSA ART LOVER</p>
       <img src="#" alt="Illustrazione Martina Redaelli" />
       <p class="statement">
@@ -117,13 +119,13 @@
               </div>
             </figcaption>
           </figure>
-          <!-- CHAMBER OF REFLECTIONS -->
+          <!-- CHAMBER OF REFLECTION -->
           <figure class="art-card">
             <div class="image-container">
               <img src="#" />
             </div>
             <figcaption>
-              <h3 class="art-title">CHAMBER OF REFLECTIONS, VOL.I</h3>
+              <h3 class="art-title">CHAMBER OF REFLECTION, VOL.I</h3>
               <time datetime="2026" class="art-date">2026</time>
               <div class="art-details">
                 <p>libro d'artista, 15 x 18 cm</p>
@@ -131,14 +133,14 @@
               </div>
             </figcaption>
           </figure>
-          <!-- ESCAPE THE FOREST -->
+          <!-- CONCRETE FOREST -->
           <figure class="art-card">
             <div class="image-container">
               <img src="#" />
             </div>
             <figcaption>
-              <h3 class="art-title">ESCAPE THE FOREST</h3>
-              <time datetime="2025" class="art-date">2025</time>
+              <h3 class="art-title">CONCRETE FOREST</h3>
+              <time datetime="2025" class="art-date">2025 - in corso</time>
               <div class="art-details">
                 <p>serie di tre installazioni</p>
                 <p>fotografia digitale su laser cut plexiglass</p>
@@ -204,25 +206,59 @@
         <summary><h2>SAGGI</h2></summary>
         <div class="essays-rows">
           <section class="essay-year">
-            <h3>2025</h3>
-            <details>
-              <summary>
-                <h4>
-                  SENZATETTO A MILANO PERDERE LA PROPRIA CASA E LA PROPRIA
-                  IDENTITÀ
-                </h4>
-              </summary>
-              <p>breve spiegazione di che cosa tratta</p>
-            </details>
-            <a href="#">LEGGI&rarr;</a>
+            <h3><time datetime="2025">2025</time></h3>
+            <article class="essay-card">
+              <details>
+                <summary>
+                  <h4>
+                    LA RESISTENZA DELL'ARTE PER IL SOCIALE NELL'ERA CAPITALISTA
+                  </h4>
+                </summary>
+                <!-- <p></p> -->
+              </details>
+              <a href="#">LEGGI&rarr;</a>
+            </article>
+            <article class="essay-card">
+              <details>
+                <summary>
+                  <h4>
+                    SENZATETTO A MILANO: PERDERE LA PROPRIA CASA E LA PROPRIA
+                    IDENTITÀ
+                  </h4>
+                </summary>
+                <p>
+                  Le voci di chi vive senza dimora a Milano: perché perdere una
+                  casa significa perdere anche identità, dignità e il diritto a
+                  essere visti.
+                </p>
+              </details>
+              <a href="#">LEGGI&rarr;</a>
+            </article>
           </section>
           <section class="essay-year">
-            <h3>2024</h3>
-            <details>
-              <summary><h4>LAND ART E ARTISTE DELLA LAND ART</h4></summary>
-              <p>breve spiegazione di che cosa tratta</p>
-            </details>
-            <a href="#">LEGGI&rarr;</a>
+            <h3><time datetime="2024">2024</time></h3>
+            <article class="essay-card">
+              <details>
+                <summary><h4>IL SECONDO STIPENDIO</h4></summary>
+                <p>
+                  Le voci delle operaie di una fabbrica tessile demolita: la
+                  memoria del lavoro femminile a Motta Visconti e
+                  dell'indipendenza che ne nacque.
+                </p>
+              </details>
+              <a href="#">LEGGI&rarr;</a>
+            </article>
+            <article class="essay-card">
+              <details>
+                <summary><h4>LAND ART E ARTISTE DELLA LAND ART</h4></summary>
+                <p>
+                  Una ricerca sulle artiste della Land Art, restituite
+                  attraverso i loro temi — corpo, politica, paesaggio — e non
+                  attraverso il genere.
+                </p>
+              </details>
+              <a href="#">LEGGI&rarr;</a>
+            </article>
           </section>
         </div>
       </details>
@@ -231,12 +267,12 @@
         <summary><h2>MOSTRE</h2></summary>
         <div class="exhibitions-rows">
           <section class="exhibition-year">
-            <h3>2026</h3>
+            <h3><time datetime="2026">2026</time></h3>
             <details>
               <summary>
                 <h4>TUMBLEWEED - QUANDO LE MAPPE NON CREANO IMPERI</h4>
               </summary>
-              <span>Artista e Coordinatrice di Mostra</span>
+              <p>Artista e Coordinatrice di Mostra</p>
               <p>Società Umanitaria, Milano</p>
               <p>
                 Coordinamento delle attività espositive e partecipazione alla
@@ -245,12 +281,12 @@
             </details>
           </section>
           <section class="exhibition-year">
-            <h3>2024</h3>
+            <h3><time datetime="2024">2024</time></h3>
             <details>
               <summary>
                 <h4>DIVERSI PRESENTI</h4>
               </summary>
-              <span>Artista</span>
+              <p>Artista</p>
               <p>Società Umanitaria, Milano</p>
               <p>
                 Partecipazione alla mostra collettiva con un progetto artistico.
@@ -269,8 +305,9 @@
             <p>
               Mi chiamo Martina Redaelli e sono un'artista visiva. Dopo aver
               conseguito la laurea triennale in Painting and Visual Arts presso
-              NABA (2025), Nuova Accademia di Belle Arti, frequento attualmente
-              il biennio in Visual Arts and Curatorial Studies.
+              NABA <time datetime="2025">(2025)</time>, Nuova Accademia di Belle
+              Arti, frequento attualmente il biennio in Visual Arts and
+              Curatorial Studies.
             </p>
             <p>
               La mia pratica artistica si sviluppa principalmente attraverso il
@@ -303,25 +340,145 @@
             <ul>
               <li>
                 <span class="entry-name">NABA Painting &amp; Visual Arts</span>
-                <span class="entry-year">2023-25</span>
+                <span class="entry-year"
+                  ><time datetime="2023">2023</time> -
+                  <time datetime="2025">2025</time></span
+                >
+              </li>
+              <li>
+                <span class="entry-name"
+                  >Visual Arts &amp; Curatorial Studies</span
+                >
+                <span class="entry-year"
+                  ><time datetime="2026">2026</time> - in corso</span
+                >
               </li>
             </ul>
           </section>
 
           <section class="about-block">
             <h3>MOSTRE</h3>
+            <details>
+              <summary>
+                <h4>Tumbleweed - quando le mappe non creano imperi</h4>
+                <p class="entry-year"><time datetime="2026">2026</time></p>
+              </summary>
+              <p>Artista e Coordinatrice di Mostra</p>
+              <p>Società Umanitaria, Milano</p>
+              <p>
+                Coordinamento delle attività espositive e partecipazione alla
+                mostra come artista.
+              </p>
+            </details>
+            <details>
+              <summary>
+                <h4>Diversi Presenti</h4>
+                <p class="entry-year"><time datetime="2024">2024</time></p>
+              </summary>
+              <p>Artista</p>
+              <p>Società Umanitaria, Milano</p>
+              <p>
+                Partecipazione alla mostra collettiva con un progetto artistico.
+              </p>
+            </details>
           </section>
 
           <section class="about-block">
             <h3>ESPERIENZE FORMATIVE</h3>
+            <details>
+              <summary>
+                <h4 class="entry-name">
+                  Assistente alla ricerca e alla produzione artistica
+                </h4>
+                <p class="entry-year">
+                  <time datetime="2025">2025</time> - in corso
+                </p>
+              </summary>
+              <p>Collaborazione con Stefano Serretta, artista e docente NABA</p>
+            </details>
+
+            <details>
+              <summary>
+                <h4 class="entry-name">
+                  Mediatrice Culturale, Triennale Milano
+                </h4>
+                <p class="entry-year"><time datetime="2025">2025</time></p>
+              </summary>
+              <p>
+                Attività di mediazione culturale e supporto al pubblico
+                nell'ambito delle mostre e della programmazione espositiva.
+              </p>
+            </details>
           </section>
         </div>
       </details>
 
       <details>
         <summary><h2>CONTATTI</h2></summary>
-        <div class="contact"></div>
+        <div class="contact">
+          <dl class="contacts">
+            <dt>email</dt>
+            <dd>
+              <a href="mailto:martinaredaelliart@gmail.com"
+                >MARTINAREDAELLIART@GMAIL.COM</a
+              >
+            </dd>
+
+            <dt>instagram</dt>
+            <dd>
+              <a
+                href="https://www.instagram.com/martinaredaelli.studio"
+                target="_blank"
+                rel="noopener"
+                >@MARTINAREDAELLI.STUDIO</a
+              >
+            </dd>
+
+            <dt>substack</dt>
+            <dd>
+              <a
+                href="https://substack.com/@ellyreda"
+                target="_blank"
+                rel="noopener"
+                >@ELLYREDA</a
+              >
+            </dd>
+          </dl>
+        </div>
       </details>
     </main>
+
+    <footer>
+      <a href="#top">TORNA SU &uarr;</a>
+      <div class="social">
+        <a href="https://substack.com/@ellyreda" target="_blank" rel="noopener"
+          >SUBSTACK</a
+        >
+        <a
+          href="https://www.instagram.com/martinaredaelli.studio"
+          target="_blank"
+          rel="noopener"
+          >INSTAGRAM</a
+        >
+      </div>
+      <p>&copy;2026 MARTINA REDAELLI</p>
+      <div class="footer-bottom">
+        <div class="location">
+          <p>MILANO</p>
+          <a href="mailto:martinaredaelliart@gmail.com"
+            >MARTINAREDAELLIART@GMAIL.COM</a
+          >
+        </div>
+        <div class="credits">
+          <p>DESIGN / CODE</p>
+          <a
+            href="https://portfolio-gretanegri.vercel.app/"
+            target="_blank"
+            rel="noopener"
+            >GRETA NEGRI</a
+          >
+        </div>
+      </div>
+    </footer>
   </body>
 </html>

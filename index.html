@@ -6,12 +6,17 @@
     <title>Martina Redaelli - Artista</title>
 
     <link rel="stylesheet" href="./src/css/base.css" />
+    <link rel="stylesheet" href="./src/css/home.css" />
   </head>
 
   <body>
     <header class="hero" id="top">
-      <p class="tagline">Artista studentessa art lover</p>
-      <img src="#" alt="Illustrazione Martina Redaelli" />
+      <ul class="tagline">
+        <li>Artista</li>
+        <li>studentessa</li>
+        <li>art lover</li>
+      </ul>
+      <img src="./assets/img/prova.png" alt="Illustrazione Martina Redaelli" />
       <p class="statement">
         Mossa dall’urgenza di mappare me stessa e l’ambiente che mi circonda:
         ricerco, creo, studio, scrivo.
@@ -55,10 +60,17 @@
         <summary><h2>Lavori</h2></summary>
         <div class="gallery-grid">
           <!-- Postcards They Won’t Receive -->
-          <a href="works/postcards-they-wont-receive.html" class="art-card">
+          <a
+            href="works/postcards-they-wont-receive.html"
+            class="art-card"
+            data-year="2025"
+          >
             <figure>
               <div class="image-container">
-                <img src="#" />
+                <img
+                  src="../assets/img/works/postcards-they-wont-receive/postcard-1-p39-front.jpg"
+                  alt="Fronte della cartolina: il cantiere P39 di Milano in bianco e nero, coperto dalla grande scritta rossa «Postcards They Won’t Receive»."
+                />
               </div>
               <figcaption>
                 <h3 class="art-title">
@@ -74,10 +86,17 @@
           </a>
 
           <!-- Hostium Rabies Diruit -->
-          <a href="works/hostium-rabies-diruit.html" class="art-card">
+          <a
+            href="works/hostium-rabies-diruit.html"
+            class="art-card"
+            data-year="2024"
+          >
             <figure>
               <div class="image-container">
-                <img src="#" />
+                <img
+                  src="./assets/img/works/hostium-rabies-diruit/citylife-1.png"
+                  alt="Francobollo con i grattacieli di CityLife in duotone viola; la scritta latina «Hostium Rabies Diruit», il valore «20 cent» e le diciture «Milano CityLife» e «Italia»."
+                />
               </div>
               <figcaption>
                 <h3 class="art-title">
@@ -101,10 +120,13 @@
             </figure>
           </a>
           <!-- Hostium Rabies Diruit - Ruins -->
-          <a href="works/ruins.html" class="art-card">
+          <a href="works/ruins.html" class="art-card" data-year="2024">
             <figure>
               <div class="image-container">
-                <img src="#" />
+                <img
+                  src="../assets/img/works/ruins/ruins-artwork.jpg"
+                  alt="Fotomontaggio distopico: nella piazza del Duomo di Milano, al posto della cattedrale, un enorme cumulo conico di macerie bianche e grigie sotto un cielo drammatico all’alba; ai lati i palazzi porticati della piazza."
+                />
               </div>
               <figcaption>
                 <h3 class="art-title">
@@ -125,10 +147,19 @@
             </figure>
           </a>
           <!-- Una Cosa Alla Volta -->
-          <a href="works/una-cosa-alla-volta.html" class="art-card">
+          <a
+            href="works/una-cosa-alla-volta.html"
+            class="art-card"
+            data-year="2024"
+          >
             <figure>
               <div class="image-container">
-                <img src="#" />
+                <iframe
+                  src="https://player.vimeo.com/video/1061169087?h=aa5e96d5b2&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1"
+                  title="Una Cosa Alla Volta — cortometraggio di Martina Redaelli e Giorgia Checcucci"
+                  allow="fullscreen; picture-in-picture"
+                  allowfullscreen
+                ></iframe>
               </div>
               <figcaption>
                 <h3 class="art-title"><cite>Una Cosa Alla Volta</cite></h3>
@@ -140,10 +171,14 @@
             </figure>
           </a>
           <!-- Chamber of Reflection -->
-          <a href="works/chamber-of-reflection.html" class="art-card">
+          <a
+            href="works/chamber-of-reflection.html"
+            class="art-card"
+            data-year="2026"
+          >
             <figure>
               <div class="image-container">
-                <img src="#" />
+                <!-- <img src="#" /> -->
               </div>
               <figcaption>
                 <h3 class="art-title">
@@ -158,16 +193,23 @@
             </figure>
           </a>
           <!-- Concrete Forest -->
-          <a href="works/concrete-forest.html" class="art-card">
+          <a
+            href="works/concrete-forest.html"
+            class="art-card"
+            data-year="2025"
+          >
             <figure>
               <div class="image-container">
-                <img src="#" />
+                <img
+                  src="../assets/img/works/concrete-forest/series.png"
+                  alt="I tre plexiglas della serie affiancati sul muro bianco — azzurro, lilla e bruno-rosato — ognuno tagliato a laser col profilo di un cielo ritagliato dallo skyline urbano."
+                />
               </div>
               <figcaption>
                 <h3 class="art-title">
                   <cite lang="en">Concrete Forest</cite>
                 </h3>
-                <time datetime="2025">2025</time> - in corso
+                <time datetime="2025" class="art-date">2025</time> - in corso
                 <div class="art-details">
                   <p>serie di installazioni,</p>
                   <p>fotografia digitale su plexiglas tagliato a laser</p>
@@ -176,10 +218,17 @@
             </figure>
           </a>
           <!-- Il Secondo Stipendio -->
-          <a href="works/il-secondo-stipendio.html" class="art-card">
+          <a
+            href="works/il-secondo-stipendio.html"
+            class="art-card"
+            data-year="2024"
+          >
             <figure>
               <div class="image-container">
-                <img src="#" />
+                <img
+                  src="../assets/img/works/il-secondo-stipendio/artwork.jpg"
+                  alt="L’opera in cornice di legno: su fondo nero, tre reperti su cartoncino — una vecchia foto di prodotto con un paio di slip bianchi e il codice «1644», un cartoncino col logo «Cagi maglierie s.p.a.» e due etichette «Fragile»."
+                />
               </div>
               <figcaption>
                 <h3 class="art-title"><cite>Il Secondo Stipendio</cite></h3>
@@ -192,10 +241,10 @@
             </figure>
           </a>
           <!-- La Vita Intima -->
-          <a href="works/la-vita-intima.html" class="art-card">
+          <a href="works/la-vita-intima.html" class="art-card" data-year="2023">
             <figure>
               <div class="image-container">
-                <img src="#" />
+                <!-- <img src="#" /> -->
               </div>
               <figcaption>
                 <h3 class="art-title"><cite>La Vita Intima</cite></h3>

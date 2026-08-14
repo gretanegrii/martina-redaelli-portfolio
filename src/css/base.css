@@ -1,19 +1,52 @@
 /* TOKENS */
 :root {
   --paper: #f7f5f0;
-  --ink: #000000;
+  --ink: #141414;
+  --ink-soft: #6b6b6b;
+  --font-main: "IBM Plex Mono", monospace;
+  --font-article: "IBM Plex Sans", sans-serif;
 }
 
 /* FONTS */
---font-logo: "Futura Condensed", sans-serif;
---font-mono: "IBM Plex Mono", monospace;
---font-sans: "IBM Plex Sans", sans-serif;
+/* ibm-plex-mono-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../assets/fonts/ibm-plex-mono-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* ibm-plex-mono-500 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../../assets/fonts/ibm-plex-mono-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* ibm-plex-sans-regular - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../assets/fonts/ibm-plex-sans-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
 
 /* --- RESET --- */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+p,
+figure {
+  margin: 0;
 }
 
 html {
@@ -27,4 +60,16 @@ body {
   padding: 0;
   background-color: var(--paper);
   color: var(--ink);
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* FOOTER (condiviso su tutte le pagine) */
+footer {
+  font-size: 0.75rem;
+  text-transform: uppercase;
 }

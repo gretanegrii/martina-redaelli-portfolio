@@ -1,1 +1,30 @@
+/* TOKENS */
+:root {
+  --paper: #f7f5f0;
+  --ink: #000000;
+}
 
+/* FONTS */
+--font-logo: "Futura Condensed", sans-serif;
+--font-mono: "IBM Plex Mono", monospace;
+--font-sans: "IBM Plex Sans", sans-serif;
+
+/* --- RESET --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-main);
+  margin: 20px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+}

@@ -10,23 +10,27 @@
   </head>
 
   <body>
-    <header class="hero" id="top">
+    <header class="hero">
       <ul class="tagline">
         <li>Artista</li>
         <li>studentessa</li>
         <li>art lover</li>
       </ul>
       <img src="./assets/img/prova.png" alt="Illustrazione Martina Redaelli" />
+    </header>
+
+    <div class="site-header" id="top">
       <p class="statement">
         Mossa dall’urgenza di mappare me stessa e l’ambiente che mi circonda:
         ricerco, creo, studio, scrivo.
       </p>
-    </header>
-
-    <main>
-      <!-- CATALOG BAR -->
       <div class="catalog-bar">
-        <h1><a class="wordmark" href="./index.html">Martina Redaelli</a></h1>
+        <h1>
+          <a class="wordmark" href="./index.html">
+            <span>Martina</span>
+            <span>Redaelli</span></a
+          >
+        </h1>
         <fieldset class="filters">
           <legend>Anno</legend>
 
@@ -54,8 +58,9 @@
         </fieldset>
         <button class="lang-toggle">IT / EN</button>
       </div>
+    </div>
 
-      <!-- SIDE NAV -->
+    <main>
       <details open>
         <summary><h2>Lavori</h2></summary>
         <div class="gallery-grid">
@@ -546,8 +551,8 @@
     </main>
 
     <footer>
-      <a href="#top">Torna su &uarr;</a>
-      <div class="social">
+      <a href="#top" class="footer-top">Torna su &uarr;</a>
+      <div class="footer-social">
         <a href="https://substack.com/@ellyreda" target="_blank" rel="noopener"
           >Substack</a
         >
@@ -558,7 +563,7 @@
           >Instagram</a
         >
       </div>
-      <p>&copy;2026 Martina Redaelli</p>
+      <p class="footer-copyright">&copy;2026 Martina Redaelli</p>
       <div class="footer-bottom">
         <div class="location">
           <p>Milano</p>

@@ -3,6 +3,7 @@
   --paper: #f7f5f0;
   --ink: #141414;
   --ink-soft: #6b6b6b;
+  --font-display: "Jost", sans-serif;
   --font-main: "IBM Plex Mono", monospace;
   --font-article: "IBM Plex Sans", sans-serif;
 }
@@ -32,6 +33,15 @@
   font-style: normal;
   font-weight: 400;
   src: url("../../assets/fonts/ibm-plex-sans-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* jost-900 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../../assets/fonts/jost-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* --- RESET --- */
@@ -72,4 +82,8 @@ nav ul {
 footer {
   font-size: 0.75rem;
   text-transform: uppercase;
+}
+
+footer-top {
+  line-height: 0;
 }

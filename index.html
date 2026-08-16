@@ -63,6 +63,17 @@
     <main>
       <details open>
         <summary><h2>Lavori</h2></summary>
+
+        <fieldset class="views">
+          <legend>Vista</legend>
+          <label
+            ><input type="radio" name="vista" value="grid" checked />
+            Grid</label
+          >
+          <label
+            ><input type="radio" name="vista" value="scroll" /> Scroll</label
+          >
+        </fieldset>
         <div class="gallery-grid">
           <!-- Postcards They Won’t Receive -->
           <a
@@ -134,7 +145,7 @@
             <figure>
               <div class="image-container">
                 <img
-                  src="../assets/img/works/ruins/ruins-artwork.jpg"
+                  src="../assets/img/works/ruins/artwork.jpg"
                   alt="Fotomontaggio distopico: nella piazza del Duomo di Milano, al posto della cattedrale, un enorme cumulo conico di macerie bianche e grigie sotto un cielo drammatico all’alba; ai lati i palazzi porticati della piazza."
                 />
               </div>
@@ -165,12 +176,10 @@
           >
             <figure>
               <div class="image-container">
-                <iframe
-                  src="https://player.vimeo.com/video/1061169087?h=aa5e96d5b2&amp;title=0&amp;byline=0&amp;portrait=0&amp;dnt=1"
-                  title="Una Cosa Alla Volta — cortometraggio di Martina Redaelli e Giorgia Checcucci"
-                  allow="fullscreen; picture-in-picture"
-                  allowfullscreen
-                ></iframe>
+                <img
+                  src="./assets/img/works/una-cosa-alla-volta/cover.png"
+                  alt="Fotogramma del video Una Cosa Alla Volta"
+                />
               </div>
               <figcaption>
                 <h3 class="art-title"><cite>Una Cosa Alla Volta</cite></h3>
@@ -220,7 +229,7 @@
                 <h3 class="art-title">
                   <cite lang="en">Concrete Forest</cite>
                 </h3>
-                <time datetime="2025" class="art-date">2025</time> - in corso
+                <time datetime="2025" class="art-date">2025</time>
                 <div class="art-details">
                   <p>serie di installazioni,</p>
                   <p>fotografia digitale su plexiglas tagliato a laser</p>
@@ -589,5 +598,7 @@
         </div>
       </div>
     </footer>
+
+    <script src="src/js/main.js" defer></script>
   </body>
 </html>

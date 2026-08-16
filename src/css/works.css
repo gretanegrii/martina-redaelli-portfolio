@@ -1,1 +1,170 @@
-/* Stile delle PAGINE-OPERA (works/*.html): visore, caption, ecc. — da scrivere */
+/* -------------------------------------------CLOSE BUTTON + IT/EN------------------------------------------- */
+
+header {
+  display: flex;
+  justify-content: space-between;
+}
+
+header a {
+  font-size: 0.9375rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+}
+
+header a::before {
+  content: "[";
+}
+
+header a::after {
+  content: "]";
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------------------------CAPTION------------------------------------------- */
+.caption h1,
+.caption time,
+.spec {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+}
+
+.caption time::before {
+  content: "[";
+}
+
+.caption time::after {
+  content: "]";
+}
+
+.caption p {
+  font-size: 0.75rem;
+  max-width: 335px;
+}
+
+.heading {
+  margin-bottom: 10px;
+}
+
+.spec {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+/* -------------------------------------------VIEWER------------------------------------------- */
+.viewer {
+  min-width: 0;
+}
+.viewer img {
+  max-width: 502px;
+  display: none;
+}
+
+.viewer img.is-active {
+  display: block;
+}
+
+/* -------------------------------------------ZOOM BUTTON------------------------------------------- */
+article button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  text-transform: uppercase;
+}
+
+article button::before {
+  content: "[";
+}
+
+article button::after {
+  content: "]";
+}
+
+article button:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------------------------GRID------------------------------------------- */
+article {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.caption {
+  grid-column: 1fr;
+}
+
+.viewer {
+  grid-column: 2fr;
+}
+
+body.verso-sinistra {
+  cursor: w-resize;
+}
+body.verso-destra {
+  cursor: e-resize;
+}
+
+/* -------------------------------------------ZOOM------------------------------------------- */
+/* Il JS mette la classe "is-zoomed" sul <body>. Queste due regole reagiscono. */
+
+/* 1. lo sfondo opaco: un velo scuro su tutta la finestra */
+body.is-zoomed .viewer::before {
+  content: "";
+  position: fixed;
+  inset: 0; /* copre tutto lo schermo */
+  background: rgba(20, 20, 20, 0.9);
+  z-index: 10; /* sopra la pagina, sotto la foto */
+}
+
+/* 2. la foto attiva emerge grande e centrata, sopra il velo */
+body.is-zoomed .viewer img.is-active {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* la centra esatta */
+  max-height: 90vh; /* grande ma dentro lo schermo */
+  max-width: 90vw;
+  width: auto;
+  z-index: 11; /* sopra il velo */
+}
+
+/* 3. il bottone Zoom resta cliccabile SOPRA il velo (per chiudere) */
+body.is-zoomed .zoom {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 12; /* più alto di velo (10) e foto (11) */
+}
+
+/* 4. la X di chiusura: nascosta normalmente */
+.zoom-close {
+  display: none;
+}
+/* compare in alto a destra quando è zoomato */
+body.is-zoomed .zoom-close {
+  display: block;
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 12;
+  font-size: 1.5rem;
+}
+
+/* i controlli sopra il velo scuro vanno in CHIARO, se no sono neri su nero */
+body.is-zoomed .zoom,
+body.is-zoomed .zoom-close {
+  color: var(--paper);
+}

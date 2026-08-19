@@ -105,7 +105,32 @@ nav ul {
   margin: 0;
 }
 
-/* -------------------------------------------LANG TOGGLE------------------------------------------- */
+/* -------------------------------------------CLOSE BUTTON + IT/EN------------------------------------------- */
+
+header:not(.hero) {
+  display: flex;
+  justify-content: space-between;
+}
+
+header:not(.hero) a {
+  font-size: 0.9375rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+}
+
+header a::before {
+  content: "[";
+}
+
+header a::after {
+  content: "]";
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
 .lang-toggle {
   border: none;
   background: none;
@@ -128,6 +153,8 @@ footer {
   font-weight: 400;
   text-transform: uppercase;
   margin-top: 380px;
+  padding: 20px;
+  border-top: 1px dashed var(--ink-soft);
 }
 
 footer a {

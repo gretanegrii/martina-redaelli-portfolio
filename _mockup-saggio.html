@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mockup saggio — documento annotato</title>
+    <style>
+      :root {
+        --paper: #f7f5f0;
+        --ink: #141414;
+        --ink-soft: #78766e;
+        --box: #dedcd3;
+        --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+        --font-sans: "IBM Plex Sans", system-ui, sans-serif;
+      }
+      * { box-sizing: border-box; margin: 0; }
+      body {
+        background: var(--paper);
+        color: var(--ink);
+        font-family: var(--font-sans);
+        -webkit-font-smoothing: antialiased;
+      }
+      .page { max-width: 980px; margin: 0 auto; padding: 2rem 3rem 6rem; }
+
+      /* header */
+      .top {
+        display: flex;
+        justify-content: space-between;
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        text-transform: uppercase;
+        margin-bottom: 5rem;
+      }
+
+      /* titolo */
+      h1 {
+        font-family: var(--font-mono);
+        font-weight: 500;
+        text-transform: uppercase;
+        font-size: 1.5rem;
+        letter-spacing: 0.02em;
+        margin-bottom: 3.5rem;
+      }
+
+      /* la riga base: etichetta a margine + colonna di lettura */
+      .row {
+        display: grid;
+        grid-template-columns: 150px minmax(0, 62ch);
+        column-gap: 40px;
+        align-items: start;
+        margin-bottom: 2.5rem;
+      }
+      .label {
+        font-family: var(--font-mono);
+        font-size: 0.8125rem;
+        line-height: 1.35;
+        text-transform: uppercase;
+        text-align: right;
+        color: var(--ink-soft);
+      }
+      .label .year { color: var(--ink); }
+      .col p {
+        font-size: 1.0625rem;
+        line-height: 1.65;
+        margin-bottom: 1rem;
+      }
+      .col p:last-child { margin-bottom: 0; }
+
+      /* immagini che sfondano: allineate alla colonna di lettura */
+      .media {
+        margin: 1rem 0 2.5rem;
+        margin-left: 190px; /* parte dopo la fascia-etichette, come il testo */
+      }
+      figure { margin: 0; }
+      .box {
+        background: var(--box);
+        display: flex;
+        align-items: flex-end;
+        padding: 0.75rem;
+        font-family: var(--font-mono);
+        font-size: 0.6875rem;
+        color: var(--ink-soft);
+      }
+      .landscape { aspect-ratio: 3 / 2; }
+      .portrait { aspect-ratio: 3 / 4; }
+      figcaption {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        line-height: 1.4;
+        color: var(--ink-soft);
+        margin-top: 0.6rem;
+      }
+      .pair { display: flex; gap: 20px; }
+      .pair figure { flex: 1; }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <div class="top"><span>[Chiudi]</span><span>IT / EN</span></div>
+
+      <h1>Land Art e artiste della Land Art</h1>
+
+      <div class="row">
+        <p class="label"><span class="year">[2024]</span></p>
+        <div class="col">
+          <p>
+            La Land Art è un movimento artistico non convenzionale nato negli
+            Stati Uniti negli anni Sessanta, nell'ambito di un più ampio
+            interesse per l'ecologia e la tutela dell'ambiente. Si caratterizza
+            per la scelta degli artisti di abbandonare i tradizionali musei e le
+            gallerie d'arte, uscendo dalla cosiddetta <em>white box</em> per
+            cercare spazi più aperti e vasti.
+          </p>
+          <p>
+            In questo saggio desidero presentare la mia ricerca sulle artiste
+            della Land Art, classificandole non in base al genere, ma secondo il
+            loro lavoro, i temi che affrontano e i mezzi espressivi che
+            utilizzano.
+          </p>
+        </div>
+      </div>
+
+      <div class="media">
+        <figure>
+          <div class="box landscape">Agnes Denes, Wheatfield</div>
+          <figcaption>
+            Agnes Denes, Wheatfield — A Confrontation, 1982. Battery Park
+            Landfill, Downtown Manhattan. © Agnes Denes.
+          </figcaption>
+        </figure>
+      </div>
+
+      <div class="row">
+        <p class="label">L'uso del corpo<br />Ana Mendieta</p>
+        <div class="col">
+          <p>
+            Nata a Cuba, Ana Mendieta si trasferì negli Stati Uniti nel 1961
+            all'età di dodici anni. Creò la serie <em>Siluetas</em> tra il 1973
+            e il 1980: oltre duecento opere in cui il suo corpo lascia
+            un'impronta nel paesaggio, nella terra, tra fiori e fuoco.
+          </p>
+        </div>
+      </div>
+
+      <div class="media">
+        <div class="pair">
+          <figure>
+            <div class="box portrait">Silueta en Fuego</div>
+            <figcaption>
+              Ana Mendieta, Silueta en Fuego, 1975. © The Estate of Ana
+              Mendieta.
+            </figcaption>
+          </figure>
+          <figure>
+            <div class="box portrait">Imagen de Yágul</div>
+            <figcaption>
+              Ana Mendieta, Imagen de Yágul, 1973. © The Estate of Ana
+              Mendieta.
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+
+      <div class="row">
+        <p class="label"></p>
+        <div class="col">
+          <p>
+            Durante le performance imprimeva il corpo nel paesaggio, poi lo
+            lasciava andare: le opere venivano lavate, bruciate, reintegrate o
+            portate via, e diventavano note attraverso la documentazione e le
+            fotografie.
+          </p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

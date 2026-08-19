@@ -1,29 +1,3 @@
-/* -------------------------------------------CLOSE BUTTON + IT/EN------------------------------------------- */
-
-header {
-  display: flex;
-  justify-content: space-between;
-}
-
-header a {
-  font-size: 0.9375rem;
-  text-transform: uppercase;
-  text-decoration: none;
-  color: inherit;
-}
-
-header a::before {
-  content: "[";
-}
-
-header a::after {
-  content: "]";
-}
-
-header a:hover {
-  text-decoration: underline;
-}
-
 /* -------------------------------------------CAPTION------------------------------------------- */
 .caption h1,
 .caption time,
@@ -152,6 +126,7 @@ body.is-zoomed .zoom {
 /* 4. la X di chiusura: nascosta normalmente */
 .zoom-close {
   display: none;
+  font-family: inherit; /* i button non ereditano il font da soli → glielo dico */
 }
 /* compare in alto a destra quando è zoomato */
 body.is-zoomed .zoom-close {
@@ -161,6 +136,7 @@ body.is-zoomed .zoom-close {
   right: 1.5rem;
   z-index: 12;
   font-size: 1.5rem;
+  font-weight: 100; /* tratto sottile (peso thin del Plex Mono) */
 }
 
 /* i controlli sopra il velo scuro vanno in CHIARO, se no sono neri su nero */

@@ -1,7 +1,3 @@
-html {
-  scroll-snap-type: y proximity;
-}
-
 /* -------------------------------------------HERO------------------------------------------- */
 .hero {
   min-height: 100vh;
@@ -9,12 +5,33 @@ html {
   flex-direction: column;
   align-items: center;
   padding-bottom: 2rem;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
 }
 
 .hero img {
   margin-block: auto;
+}
+
+/* -------------------------------------------DUE SCHERMATE------------------------------------------- */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 200vh;
+}
+
+footer {
+  margin-top: auto; /* spinge il footer in fondo alla seconda schermata */
+}
+
+/* -------------------------------------------STATEMENT------------------------------------------- */
+.statement {
+  max-width: 55ch; /* perchè ch?? */
+  margin-inline: auto;
+  margin-bottom: 2rem;
+  font-size: 0.875rem;
+  font-weight: 400;
+  line-height: 1.25;
+  text-transform: uppercase;
+  text-align: center;
 }
 
 /* -------------------------------------------TAGLINE------------------------------------------- */
@@ -37,19 +54,13 @@ html {
 .site-header {
   position: sticky;
   top: 0;
-  scroll-snap-align: start;
-  scroll-snap-stop: always;
+  pointer-events: none;
 }
 
-/* -------------------------------------------STATEMENT------------------------------------------- */
-.statement {
-  max-width: 55ch;
-  margin-inline: auto;
-  font-size: 0.875rem;
-  font-weight: 400;
-  line-height: 1.25;
-  text-transform: uppercase;
-  text-align: center;
+/* aprendo una sezione da #lavori/#saggi/#mostre, lo scroll si ferma
+   QUESTO spazio sotto il wordmark sticky (se no il titolo ci finisce sotto) */
+main > details {
+  scroll-margin-top: 130px;
 }
 
 /* -------------------------------------------WORDMARK------------------------------------------- */
@@ -71,10 +82,11 @@ html {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-top: 1rem;
+  margin-top: 0;
   margin-bottom: 2.25em;
-  padding-top: 1rem;
+  padding-top: 0.5rem;
   border-top: 1px dashed var(--ink-soft);
+  pointer-events: auto;
 }
 
 .catalog-bar h1 {
@@ -82,7 +94,8 @@ html {
   line-height: 0.77;
 }
 
-/* -------------------------------------------FILTERS------------------------------------------- */
+/* -------------------------------------------CONTROLS (filtro + vista)------------------------------------------- */
+/* --- filtro anni --- */
 /* parentesi in CSS: il radio nativo non si può personalizzare */
 .filters label::before {
   content: "[ ]";
@@ -112,11 +125,10 @@ html {
 
 .filters {
   display: flex;
-  gap: 1.5rem;
+  gap: 1rem;
   margin: 0;
   padding: 0;
   border: none;
-  font-size: 0.9375rem;
   font-weight: 400;
   text-transform: uppercase;
 }
@@ -126,71 +138,10 @@ html {
   content: "[•]";
 }
 
-/* sbiadisce e disattiva le card di altri anni */
-body:has(.filters input[value="2026"]:checked)
-  .art-card:not([data-year="2026"]) {
-  opacity: 0.2;
-  pointer-events: none;
-}
-
-body:has(.filters input[value="2025"]:checked)
-  .art-card:not([data-year="2025"]) {
-  opacity: 0.2;
-  pointer-events: none;
-}
-
-body:has(.filters input[value="2024"]:checked)
-  .art-card:not([data-year="2024"]) {
-  opacity: 0.2;
-  pointer-events: none;
-}
-
-body:has(.filters input[value="2023"]:checked)
-  .art-card:not([data-year="2023"]) {
-  opacity: 0.2;
-  pointer-events: none;
-}
-
-/* -------------------------------------------TOGGLE LIST------------------------------------------- */
-summary {
-  list-style: none;
-  display: inline-flex;
-  font-weight: 400;
-  cursor: pointer;
-}
-
-summary::before {
-  content: "[+]";
-}
-
-details[open] > summary::before {
-  content: "[-]";
-}
-
-details summary h2 {
-  font-size: 0.9375rem;
-  font-weight: 400;
-  text-transform: uppercase;
-  margin-bottom: 0.5rem;
-}
-
-details::details-content {
-  height: 0;
-  overflow: hidden;
-  transition:
-    height 0.8s ease,
-    content-visibility 0.8s allow-discrete;
-}
-
-details[open]::details-content {
-  height: auto;
-}
-
-/* -------------------------------------------WORKS------------------------------------------- */
-/* (Grid / Scroll button) */
+/* --- vista Griglia / Scroll --- */
 .views {
   display: flex;
-  flex-direction: column;
+  gap: 1rem;
   border: none;
   margin: 0;
   padding: 0;
@@ -224,6 +175,59 @@ details[open]::details-content {
   white-space: nowrap;
 }
 
+.works-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-left: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* -------------------------------------------TOGGLE LIST------------------------------------------- */
+summary {
+  list-style: none;
+  display: flex;
+  font-weight: 400;
+  cursor: pointer;
+}
+
+summary::before {
+  content: "[+]";
+}
+
+details[open] > summary::before {
+  content: "[-]";
+}
+
+details summary h2 {
+  font-size: 0.9375rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-bottom: 0.5rem;
+}
+
+/* apertura morbida delle sezioni — metodo "grid-rows": anima tra 0fr e 1fr
+   (valori concreti → non si incastra mai). Il contenuto è avvolto da main.js
+   in .reveal > .reveal-inner. Scopato alle SOLE sezioni principali. */
+main > details::details-content {
+  content-visibility: visible; /* tengo il contenuto renderizzato, così lo animiamo noi */
+}
+
+main > details > .reveal {
+  display: grid;
+  grid-template-rows: 0fr; /* chiuso: riga schiacciata a zero */
+  transition: grid-template-rows 0.4s ease;
+}
+
+main > details[open] > .reveal {
+  grid-template-rows: 1fr; /* aperto: riga ad altezza naturale */
+}
+
+.reveal-inner {
+  overflow: hidden; /* nasconde il contenuto mentre la riga è a 0 */
+}
+
+/* -------------------------------------------WORKS------------------------------------------- */
 /* griglia e card (base, comune alle due viste) */
 .gallery-grid {
   display: grid;
@@ -292,7 +296,32 @@ details[open]::details-content {
   opacity: 1;
 }
 
-/* ------grid------ */
+/* --- reazione al FILTRO ANNI: sbiadisce e disattiva le card di altri anni --- */
+body:has(.filters input[value="2026"]:checked)
+  .art-card:not([data-year="2026"]) {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+body:has(.filters input[value="2025"]:checked)
+  .art-card:not([data-year="2025"]) {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+body:has(.filters input[value="2024"]:checked)
+  .art-card:not([data-year="2024"]) {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+body:has(.filters input[value="2023"]:checked)
+  .art-card:not([data-year="2023"]) {
+  opacity: 0.2;
+  pointer-events: none;
+}
+
+/* --- reazione alla VISTA Griglia --- */
 body:has(.views input[value="grid"]:checked) .art-card {
   grid-column: span 3;
 }
@@ -314,10 +343,6 @@ body:has(.views input[value="grid"]:checked) .image-container {
 body:has(.views input[value="grid"]:checked) figcaption {
   width: 0;
   min-width: 100%;
-}
-
-body:has(.views input[value="grid"]:checked) .footer-top {
-  display: none;
 }
 
 /* -------------------------------------------ESSAYS + EXHIBITIONS------------------------------------------- */
@@ -436,9 +461,90 @@ body:has(.views input[value="grid"]:checked) .footer-top {
 /* -------------------------------------------ABOUT------------------------------------------- */
 .about-block {
   font-size: 0.9375rem;
+  margin-top: 30px;
 }
 
 .about-block h3 {
   font-weight: 400;
   text-transform: uppercase;
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
+}
+
+.about-block h3::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px dashed var(--ink-soft);
+}
+
+.about-block p {
+  max-width: 65ch;
+  margin: 0 0 10px 30px;
+}
+
+.about-block li {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.about-block li::before {
+  content: "•";
+}
+
+.about-block li p {
+  flex-basis: 100%;
+  max-width: 65ch;
+  margin: 0.25rem 0 1.25rem 1.4rem;
+  font-size: 0.8125rem;
+  color: var(--ink-soft);
+}
+
+.entry-name {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.entry-year::before {
+  content: "[";
+}
+
+.entry-year::after {
+  content: "]";
+}
+
+.about-block summary {
+  display: flex;
+  align-items: baseline;
+  gap: 0.5rem;
+}
+
+.about-block summary h4 {
+  margin: 0;
+  font-weight: 400;
+}
+
+/* -------------------------------------------CONTACT------------------------------------------- */
+.contacts {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  column-gap: 1rem;
+  row-gap: 0.5rem;
+}
+
+.contacts dt,
+.contacts dd {
+  margin: 0;
+}
+
+.contacts dt {
+  font-size: 0.75rem;
+  text-align: right;
+}
+
+.contacts dd a {
+  color: inherit;
 }

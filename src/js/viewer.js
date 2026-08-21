@@ -2,9 +2,9 @@
 // Mostra le immagini della serie UNA alla volta + Zoom.
 // Metà sinistra dello schermo = precedente, metà destra = successiva.
 
-// Prendo il contenitore del visore e TUTTE le immagini dentro di lui.
+// Prendo il contenitore del visore e TUTTE le media dentro di lui (immagini + video).
 const viewer = document.querySelector(".viewer");
-const images = viewer ? viewer.querySelectorAll("img") : [];
+const images = viewer ? viewer.querySelectorAll("img, video") : [];
 
 // GUARDIA: niente visore o niente immagini (es. la pagina video) → mi fermo.
 if (images.length > 0) {
@@ -13,10 +13,15 @@ if (images.length > 0) {
 
   // Accende SOLO l'immagine all'indice richiesto.
   const show = (index) => {
-    images[current].classList.remove("is-active");
+    const precedente = images[current];
+    if (precedente.tagName === "VIDEO") precedente.pause(); // metto in pausa il video che lascio
+    precedente.classList.remove("is-active");
     // "% images.length" fa il GIRO: da -1 torno all'ultima, oltre l'ultima torno a 0.
     current = (index + images.length) % images.length;
-    images[current].classList.add("is-active");
+    const attuale = images[current];
+    attuale.classList.add("is-active");
+    // se la slide è un video, lo faccio partire (muto+loop → parte da solo, in loop)
+    if (attuale.tagName === "VIDEO") attuale.play().catch(() => {});
   };
   show(0); // accendo la prima (anche se è l'unica)
 
@@ -46,12 +51,29 @@ if (images.length > 0) {
   // Funziona SIA in visione normale SIA in zoom: cambia l'immagine "is-active",
   // e il CSS dello zoom segue quella, così scorri tra le foto ingrandite.
   document.addEventListener("click", (event) => {
-    if (event.target.closest("a, button")) return; // link/bottoni li lascio fare (Zoom compreso)
+    if (event.target.closest("a, button, video")) return; // link/bottoni/video li lascio fare (i comandi del video funzionano)
     if (images.length > 1) {
       if (event.clientX < window.innerWidth / 2) show(current - 1); // metà sinistra
       else show(current + 1); // metà destra
     }
   });
+
+  // ===== FRECCE VISIVE =====
+  // Due frecce ‹ › come indizio "puoi sfogliare". Le creo qui in JS (come la ×)
+  // così esistono SOLO dove c'è più di un'immagine, senza toccare l'HTML di ogni pagina.
+  if (images.length > 1) {
+    const frecciaSx = document.createElement("span"); // un contenitore vuoto per il simbolo
+    frecciaSx.className = "arrow arrow-left"; // classi per stilarla nel CSS
+    frecciaSx.textContent = "‹"; // il simbolo dentro
+    frecciaSx.setAttribute("aria-hidden", "true"); // decorativa: la vera navigazione è click + tastiera
+
+    const frecciaDx = document.createElement("span");
+    frecciaDx.className = "arrow arrow-right";
+    frecciaDx.textContent = "›";
+    frecciaDx.setAttribute("aria-hidden", "true");
+
+    viewer.append(frecciaSx, frecciaDx); // le attacco dentro il visore
+  }
 
   // Cursore-freccia che cambia lato (anche in zoom, così sai che puoi scorrere).
   if (images.length > 1) {

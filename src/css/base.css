@@ -1,32 +1,35 @@
 /* -------------------------------------------TOKENS------------------------------------------- */
 :root {
-  --paper: #f7f5f0;
+  --paper: #f8f8f8;
   --ink: #141414;
   --ink-soft: #6b6b6b;
   --font-display: "Jost", sans-serif;
   --font-main: "IBM Plex Mono", monospace;
   --font-article: "IBM Plex Sans", sans-serif;
-  interpolate-size: allow-keywords;
+}
+
+/* -------------------------------------------TRANSIZIONI TRA PAGINE------------------------------------------- */
+/* Entrata: il contenuto entra salendo e dissolvendo a OGNI caricamento pagina.
+   Metodo semplice e affidabile (animazione sul body). */
+body {
+  animation: entrata-pagina 0.8s ease-out both;
+}
+
+@keyframes entrata-pagina {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+}
+
+/* rispetta chi ha ridotto le animazioni nelle preferenze di sistema */
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
 }
 
 /* -------------------------------------------FONTS------------------------------------------- */
-/* ibm-plex-mono-100 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: "IBM Plex Mono";
-  font-style: normal;
-  font-weight: 100;
-  src: url("../../assets/fonts/ibm-plex-mono-thin.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-/* ibm-plex-mono-200 - latin */
-@font-face {
-  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: "IBM Plex Mono";
-  font-style: normal;
-  font-weight: 200;
-  src: url("../../assets/fonts/ibm-plex-mono-extralight.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
-}
-
 /* ibm-plex-mono-light - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
@@ -60,6 +63,15 @@
   font-style: normal;
   font-weight: 400;
   src: url("../../assets/fonts/ibm-plex-sans-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* ibm-plex-sans-italic - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "IBM Plex Sans";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../../assets/fonts/ibm-plex-sans-italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
 /* jost-900 - latin */
@@ -97,6 +109,7 @@ body {
   padding: 0;
   background-color: var(--paper);
   color: var(--ink);
+  text-underline-offset: 0.2em;
 }
 
 nav ul {
@@ -153,11 +166,11 @@ footer {
   font-weight: 400;
   text-transform: uppercase;
   margin-top: 380px;
-  padding: 20px;
   border-top: 1px dashed var(--ink-soft);
 }
 
 footer a {
+  margin-top: 10px;
   text-decoration: none;
   color: inherit;
 }

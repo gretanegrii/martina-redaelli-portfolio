@@ -1,51 +1,36 @@
 /* -------------------------------------------LAYOUT------------------------------------------- */
 article {
-  display: grid;
-  grid-template-columns: 180px minmax(0, 1fr);
-  column-gap: 40px;
-  align-items: start;
-  padding: 40px 20px 60px;
+  max-width: 900px;
+  margin-inline: auto;
 }
 
 h1 {
-  grid-column: 2;
-  font-size: 3rem;
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+  letter-spacing: -1%;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+h2 {
+  margin: 2rem 0;
+  font-size: 1.5rem;
   text-transform: uppercase;
 }
 
 time {
-  grid-column: 2;
-  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 500;
   text-transform: uppercase;
-  margin-bottom: 3rem;
 }
 
 time::before {
   content: "[";
 }
+
 time::after {
-  content: "]";
-}
-
-/* -------------------------------------------COLONNA SINISTRA------------------------------------------- */
-
-h4 {
-  grid-column: 1;
-  text-align: right;
-}
-
-h2 {
-  margin-top: 2rem;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-
-h2::before {
-  content: "[";
-}
-
-h2::after {
   content: "]";
 }
 
@@ -62,32 +47,22 @@ h4 {
   text-decoration: underline;
 }
 
-/* -------------------------------------------COLONNA DESTRA------------------------------------------- */
-h2,
-h3,
-p,
-figure,
-.image-pair {
-  grid-column: 2;
-}
-
 article p {
   font-family: var(--font-article);
   font-size: 1.0625rem;
   line-height: 1.65;
-  margin-bottom: 1rem;
+  margin-bottom: 2.5rem;
 }
 
 /* -------------------------------------------IMMAGINI------------------------------------------- */
 figure {
   margin: 1.5rem 0;
   max-width: 900px;
+  margin-inline: auto;
 }
 
 figure img {
   width: 100%;
-  max-width: 900px;
-  height: auto;
   display: block;
 }
 
@@ -96,30 +71,29 @@ figcaption {
   line-height: 1.4;
   color: var(--ink-soft);
   margin-top: 0.6rem;
+  text-align: center;
 }
 
-.image-pair {
-  display: flex;
-  gap: 20px;
+figure.portrait img {
+  width: 100%;
+  max-width: 500px;
+  margin-inline: auto;
 }
 
-.image-pair figure {
-  flex: 1;
-}
-
-/* -------------------------------------------BIBLIOGRAFIA------------------------------------------- */
+/* -------------------------------------------NOTE + BIBLIOGRAFIA------------------------------------------- */
+.note,
 .bibliografia {
-  grid-column: 1 / -1;
   margin-top: 4rem;
   padding-top: 1.5rem;
-  border-top: 1px solid var(--ink-soft);
 }
 
+.note h2,
 .bibliografia h2 {
   margin: 0 0 1rem;
   font-size: 0.75rem;
 }
 
+.note ol,
 .bibliografia ul {
   list-style: none;
   padding: 0;
@@ -127,4 +101,10 @@ figcaption {
   font-size: 0.75rem;
   line-height: 1.7;
   color: var(--ink-soft);
+}
+
+article sup a {
+  font-weight: 500;
+  font-style: italic;
+  color: inherit; /* eredita l'inchiostro del testo, basta blu */
 }

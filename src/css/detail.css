@@ -1,4 +1,35 @@
+/* -------------------------------------------GRID------------------------------------------- */
+article {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  justify-content: center;
+  margin-top: 40px;
+  min-height: 80vh;
+}
+
+.caption {
+  grid-column: 1fr;
+}
+
+.viewer {
+  grid-column: 2fr;
+}
+
+body.verso-sinistra {
+  cursor: w-resize;
+}
+body.verso-destra {
+  cursor: e-resize;
+}
+
 /* -------------------------------------------CAPTION------------------------------------------- */
+.caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
 .caption h1,
 .caption time,
 .spec {
@@ -16,11 +47,7 @@
 
 .caption p {
   font-size: 0.75rem;
-  max-width: 335px;
-}
-
-.heading {
-  margin-bottom: 10px;
+  max-width: 400px;
 }
 
 .spec {
@@ -31,16 +58,22 @@
 }
 
 /* -------------------------------------------VIEWER------------------------------------------- */
-.viewer {
-  min-width: 0;
-}
-.viewer img {
-  max-width: 502px;
+.viewer img,
+.viewer video {
+  max-width: 600px;
+  max-height: 80vh;
   display: none;
 }
 
-.viewer img.is-active {
+.viewer img.is-active,
+.viewer video.is-active {
   display: block;
+}
+
+.viewer {
+  width: fit-content;
+  text-align: right;
+  position: relative; /* diventa il riferimento per piazzare le frecce SOPRA l'immagine */
 }
 
 /* -------------------------------------------ZOOM BUTTON------------------------------------------- */
@@ -66,33 +99,6 @@ article button::after {
 article button:hover {
   text-decoration: underline;
 }
-
-/* -------------------------------------------GRID------------------------------------------- */
-article {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  align-items: center;
-  justify-content: center;
-  margin-top: 40px;
-}
-
-.caption {
-  grid-column: 1fr;
-}
-
-.viewer {
-  grid-column: 2fr;
-}
-
-body.verso-sinistra {
-  cursor: w-resize;
-}
-body.verso-destra {
-  cursor: e-resize;
-}
-
-/* -------------------------------------------ZOOM------------------------------------------- */
-/* Il JS mette la classe "is-zoomed" sul <body>. Queste due regole reagiscono. */
 
 /* 1. lo sfondo opaco: un velo scuro su tutta la finestra */
 body.is-zoomed .viewer::before {
@@ -121,6 +127,7 @@ body.is-zoomed .zoom {
   bottom: 2rem;
   right: 2rem;
   z-index: 12; /* più alto di velo (10) e foto (11) */
+  display: none;
 }
 
 /* 4. la X di chiusura: nascosta normalmente */
@@ -136,7 +143,8 @@ body.is-zoomed .zoom-close {
   right: 1.5rem;
   z-index: 12;
   font-size: 1.5rem;
-  font-weight: 100; /* tratto sottile (peso thin del Plex Mono) */
+  font-weight: 400;
+  text-underline-offset: 0.2em;
 }
 
 /* i controlli sopra il velo scuro vanno in CHIARO, se no sono neri su nero */
@@ -144,3 +152,30 @@ body.is-zoomed .zoom,
 body.is-zoomed .zoom-close {
   color: var(--paper);
 }
+
+/* -------------------------------------------ARROWS------------------------------------------- */
+.arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0; /* la freccia è alta quanto l'immagine → sensibile a ogni altezza */
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  font-size: 2rem;
+}
+
+.arrow-left {
+  right: 100%; /* il bordo destro della freccia si aggancia al bordo SINISTRO dell'immagine → esce a sinistra */
+  margin-right: 0.75rem; /* stacco dall'immagine */
+}
+
+.arrow-right {
+  left: 100%; /* il bordo sinistro della freccia si aggancia al bordo DESTRO dell'immagine → esce a destra */
+  margin-left: 0.75rem;
+}
+
+.viewer:hover .arrow {
+  opacity: 1;
+} /* appaiono quando il mouse è sull'immagine */

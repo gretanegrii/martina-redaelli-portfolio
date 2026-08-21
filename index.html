@@ -38,53 +38,53 @@
             <span>Redaelli</span></a
           >
         </h1>
-        <fieldset class="filters">
-          <legend>Anno</legend>
 
-          <label>
-            <input type="radio" name="anno" value="all" checked />
-            Tutti
-          </label>
-
-          <label>
-            <input type="radio" name="anno" value="2026" />
-            2026
-          </label>
-          <label>
-            <input type="radio" name="anno" value="2025" />
-            2025
-          </label>
-          <label>
-            <input type="radio" name="anno" value="2024" />
-            2024
-          </label>
-          <label>
-            <input type="radio" name="anno" value="2023" />
-            2023
-          </label>
-        </fieldset>
         <button class="lang-toggle"><span>IT</span> / <span>EN</span></button>
       </div>
     </div>
 
     <main>
-      <details open>
+      <details name="sezioni" open class="lavori" id="lavori">
         <summary><h2>Lavori</h2></summary>
-
-        <fieldset class="views">
-          <legend>Vista</legend>
-          <label
-            ><input
-              type="radio"
-              name="vista"
-              value="grid"
-              checked
-            />Griglia</label
-          >
-          <label
-            ><input type="radio" name="vista" value="scroll" />Scroll</label
-          >
-        </fieldset>
+        <div class="works-controls">
+          <fieldset class="filters">
+            <legend>Anno</legend>
+            <label>
+              <input type="radio" name="anno" value="all" checked />
+              Tutti
+            </label>
+            <label>
+              <input type="radio" name="anno" value="2026" />
+              2026
+            </label>
+            <label>
+              <input type="radio" name="anno" value="2025" />
+              2025
+            </label>
+            <label>
+              <input type="radio" name="anno" value="2024" />
+              2024
+            </label>
+            <label>
+              <input type="radio" name="anno" value="2023" />
+              2023
+            </label>
+          </fieldset>
+          <fieldset class="views">
+            <legend>Vista</legend>
+            <label
+              ><input
+                type="radio"
+                name="vista"
+                value="grid"
+                checked
+              />Griglia</label
+            >
+            <label
+              ><input type="radio" name="vista" value="scroll" />Scroll</label
+            >
+          </fieldset>
+        </div>
         <div class="gallery-grid">
           <!-- Postcards They Won’t Receive -->
           <a
@@ -276,7 +276,10 @@
           <a href="works/la-vita-intima.html" class="art-card" data-year="2023">
             <figure>
               <div class="image-container">
-                <!-- <img src="#" /> -->
+                <img
+                  src="../assets/img/works/la-vita-intima/mockup-01.jpg"
+                  alt="Copertina della fanzine «La Vita Intima»: un contact sheet di fotogrammi analogici in bianco e nero a tutta pagina, dai toni scuri."
+                />
               </div>
               <figcaption>
                 <h3 class="art-title"><cite>La Vita Intima</cite></h3>
@@ -291,7 +294,7 @@
         </div>
       </details>
 
-      <details>
+      <details name="sezioni" id="saggi">
         <summary><h2>Saggi</h2></summary>
         <div class="essays-rows">
           <section class="essay-year">
@@ -370,7 +373,7 @@
         </div>
       </details>
 
-      <details>
+      <details name="sezioni" id="mostre">
         <summary><h2>Mostre</h2></summary>
         <div class="exhibitions-rows">
           <section class="exhibition-year">
@@ -392,6 +395,7 @@
                   mostra come artista.
                 </p>
               </details>
+              <a href="./exhibitions/tumbleweed.html">Leggi&rarr;</a>
             </article>
           </section>
           <section class="exhibition-year">
@@ -408,12 +412,13 @@
                   artistico.
                 </p>
               </details>
+              <a href="./exhibitions/diversi-presenti.html">Leggi&rarr;</a>
             </article>
           </section>
         </div>
       </details>
 
-      <details>
+      <details name="sezioni">
         <summary><h2>Su di me</h2></summary>
         <div class="about-content">
           <section class="about-block">
@@ -483,71 +488,38 @@
           </section>
 
           <section class="about-block">
-            <h3>Mostre</h3>
-            <details>
-              <summary>
-                <h4>
-                  <cite
-                    ><i lang="en">Tumbleweed</i> - quando le mappe non creano
-                    imperi</cite
-                  >
-                </h4>
-                <p class="entry-year"><time datetime="2026">2026</time></p>
-              </summary>
-              <p>Artista e Coordinatrice di mostra</p>
-              <p>Società Umanitaria, Milano</p>
-              <p>
-                Coordinamento delle attività espositive e partecipazione alla
-                mostra come artista.
-              </p>
-            </details>
-            <details>
-              <summary>
-                <h4><cite>Diversi Presenti</cite></h4>
-                <p class="entry-year"><time datetime="2024">2024</time></p>
-              </summary>
-              <p>Artista</p>
-              <p>Società Umanitaria, Milano</p>
-              <p>
-                Partecipazione alla mostra collettiva con un progetto artistico.
-              </p>
-            </details>
-          </section>
-
-          <section class="about-block">
             <h3>Esperienze formative</h3>
-            <details>
-              <summary>
-                <h4 class="entry-name">
-                  Assistente alla ricerca e alla produzione artistica
-                </h4>
-                <p class="entry-year">
-                  <time datetime="2025">2025</time> - in corso
+            <ul>
+              <li>
+                <span class="entry-name"
+                  >Assistente alla ricerca e alla produzione artistica</span
+                >
+                <span class="entry-year"
+                  ><time datetime="2025">2025</time> - in corso</span
+                >
+                <p>
+                  Collaborazione con Stefano Serretta, artista e docente
+                  <abbr title="Nuova Accademia di Belle Arti">NABA</abbr>
                 </p>
-              </summary>
-              <p>
-                Collaborazione con Stefano Serretta, artista e docente
-                <abbr title="Nuova Accademia di Belle Arti">NABA</abbr>
-              </p>
-            </details>
-
-            <details>
-              <summary>
-                <h4 class="entry-name">
-                  Mediatrice culturale, Triennale Milano
-                </h4>
-                <p class="entry-year"><time datetime="2025">2025</time></p>
-              </summary>
-              <p>
-                Attività di mediazione culturale e supporto al pubblico
-                nell’ambito delle mostre e della programmazione espositiva.
-              </p>
-            </details>
+              </li>
+              <li>
+                <span class="entry-name"
+                  >Mediatrice culturale, Triennale Milano</span
+                >
+                <span class="entry-year"
+                  ><time datetime="2025">2025</time></span
+                >
+                <p>
+                  Attività di mediazione culturale e supporto al pubblico
+                  nell’ambito delle mostre e della programmazione espositiva.
+                </p>
+              </li>
+            </ul>
           </section>
         </div>
       </details>
 
-      <details>
+      <details name="sezioni">
         <summary><h2>Contatti</h2></summary>
         <div class="contact">
           <dl class="contacts">
@@ -583,7 +555,6 @@
     </main>
 
     <footer>
-      <a href="#top" class="footer-top">Torna su &uarr;</a>
       <div class="footer-social">
         <a href="https://substack.com/@ellyreda" target="_blank" rel="noopener"
           >Substack</a

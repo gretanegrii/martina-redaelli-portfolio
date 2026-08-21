@@ -3,6 +3,7 @@
   --paper: #f8f8f8;
   --ink: #141414;
   --ink-soft: #6b6b6b;
+  --brick: #9e4635; /* mattone del cerchio dell'autoritratto, usato nell'entrance */
   --font-display: "Jost", sans-serif;
   --font-main: "IBM Plex Mono", monospace;
   --font-article: "IBM Plex Sans", sans-serif;
@@ -213,4 +214,9 @@ footer a:hover {
 
 .footer-copyright {
   text-align: center;
+}
+
+/* niente puntinato sotto le abbreviazioni (NABA); il tooltip title resta */
+abbr[title] {
+  text-decoration: none;
 }

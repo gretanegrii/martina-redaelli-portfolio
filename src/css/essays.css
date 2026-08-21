@@ -114,7 +114,7 @@ figure.portrait img {
 article sup a {
   font-weight: 500;
   font-style: italic;
-  color: inherit; /* eredita l'inchiostro del testo, basta blu */
+  color: inherit;
 }
 
 blockquote p {
@@ -135,4 +135,8 @@ blockquote p {
 
 .related-work a:hover {
   text-decoration: underline;
+}
+
+/* -------------------------------------------------------------------------RESPONSIVE----------------------------------------------------------------------------------- */
+@media (max-width: 600px) {
 }

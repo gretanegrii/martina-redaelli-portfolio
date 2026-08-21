@@ -380,11 +380,7 @@ body:has(.views input[value="grid"]:checked) figcaption {
 
 .essay-card,
 .exhibition-card {
-  display: flex;
-  align-items: baseline;
-  gap: 0.75rem;
-  padding-left: 2.75rem;
-  margin-bottom: 0rem;
+  margin-bottom: 0.75rem; /* aria tra un titolo e l'altro */
 }
 
 .essay-card h4,
@@ -395,61 +391,37 @@ body:has(.views input[value="grid"]:checked) figcaption {
   text-transform: uppercase;
 }
 
-.essay-card details,
-.exhibition-card details {
-  flex: 1;
-}
-
-.essay-card summary,
-.exhibition-card summary {
-  display: flex;
-  align-items: baseline;
-  gap: 0.5rem;
-}
-
-.essay-card summary::after,
-.exhibition-card summary::after {
-  content: "";
-  flex: 1;
-  border-bottom: 1px dashed var(--ink-soft);
-}
-
-.essay-card p,
-.exhibition-card p {
-  font-size: 0.9375rem;
-  margin-left: 35px;
-  max-width: 50%;
-  margin-block: 0.5rem 1rem;
-}
-
-/* MOSTRE: le 3 righe (ruolo / luogo / testo) più vicine */
-.exhibition-card p {
-  margin-block: 0.15rem;
-}
-
-/* MOSTRE: 1ª riga (ruolo) maiuscolo, 2ª (luogo) maiuscolo corsivo */
-/* ruolo + luogo: metadati piccoli e grigi */
-.exhibition-card p:nth-of-type(1),
-.exhibition-card p:nth-of-type(2) {
-  font-size: 0.8125rem;
-  color: var(--ink-soft);
-  text-transform: uppercase;
-}
-
+/* la riga: titolo a sinistra, freccia a destra */
 .essay-card a,
 .exhibition-card a {
+  display: flex;
+  align-items: baseline;
+  gap: 0.75rem;
   text-decoration: none;
   color: inherit;
   text-transform: uppercase;
 }
 
-.essay-card a::before,
-.exhibition-card a::before {
-  content: "[";
+/* i puntini che riempiono lo spazio tra titolo e [LEGGI] */
+.essay-card .leader,
+.exhibition-card .leader {
+  flex: 1; /* si allunga a riempire tutto lo spazio in mezzo */
+  border-bottom: 1px dashed var(--ink-soft);
+  transform: translateY(-0.15em); /* alza la linea vicino alla base del testo */
 }
 
-.essay-card a::after,
-.exhibition-card a::after {
+/* etichetta [LEGGI] a destra */
+.essay-card .leggi,
+.exhibition-card .leggi {
+  flex: none; /* non si restringe */
+  white-space: nowrap;
+}
+.essay-card .leggi::before,
+.exhibition-card .leggi::before {
+  content: "[";
+}
+.essay-card .leggi::after,
+.exhibition-card .leggi::after {
   content: "]";
 }
 
@@ -490,14 +462,22 @@ body:has(.views input[value="grid"]:checked) figcaption {
   gap: 0.5rem;
 }
 
-.about-block li::before {
-  content: "•";
+/* voci SENZA descrizione (Formazione): un po' d'aria tra una e l'altra.
+   in Esperienze lo spazio lo dà già il margine del grigio, quindi le escludo */
+.about-block li:not(:has(p)) {
+  margin-bottom: 0.6rem;
+}
+
+/* voci CON descrizione (Esperienze): nome, anno e grigio IMPILATI, come su mobile */
+.about-block li:has(p) {
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.15rem; /* righe strette una sull'altra */
 }
 
 .about-block li p {
-  flex-basis: 100%;
   max-width: 65ch;
-  margin: 0.25rem 0 1.25rem 1.4rem;
+  margin: 0 0 1.25rem 0; /* grigio attaccato al titolo; 1.25rem stacca dalla voce dopo */
   font-size: 0.8125rem;
   color: var(--ink-soft);
 }
@@ -549,12 +529,14 @@ body:has(.views input[value="grid"]:checked) figcaption {
   color: inherit;
 }
 
-.cv-link a {
+.cv-link a,
+.portfolio-link a {
   text-decoration: none;
   color: inherit;
 }
 
-.cv-link {
+.cv-link,
+.portfolio-link {
   margin-top: 3rem;
   margin-left: 4rem;
 }
@@ -571,6 +553,18 @@ body:has(.views input[value="grid"]:checked) figcaption {
   text-decoration: underline;
 }
 
+.portfolio-link::before {
+  content: "[";
+}
+
+.portfolio-link::after {
+  content: "]";
+}
+
+.portfolio-link a:hover {
+  text-decoration: underline;
+}
+
 /* -------------------------------------------------------------------------RESPONSIVE----------------------------------------------------------------------------------- */
 main {
   margin-bottom: 2rem;
@@ -584,6 +578,40 @@ main {
   /* no toggle */
   .views {
     display: none;
+  }
+
+  /* Su di me: testi a filo con le intestazioni (niente rientro) su mobile */
+  .about-block ul {
+    padding-left: 0;
+  }
+  .about-block p {
+    margin-left: 0;
+  }
+
+  /* niente puntini su mobile: [LEGGI] spinto a destra da solo */
+  .essay-card .leader,
+  .exhibition-card .leader {
+    display: none;
+  }
+
+  .essay-card .leggi,
+  .exhibition-card .leggi {
+    margin-left: auto;
+    font-size: 0; /* nasconde "Leggi" */
+  }
+  .essay-card .leggi::before,
+  .exhibition-card .leggi::before {
+    content: "→";
+    font-size: 1rem; /* la freccia al posto della "[" */
+  }
+  .essay-card .leggi::after,
+  .exhibition-card .leggi::after {
+    content: none; /* via la "]" */
+  }
+
+  .essay-card,
+  .exhibition-card {
+    margin-bottom: 1rem;
   }
 
   /* -------------------------------------------GALLERY GRID------------------------------------------- */
@@ -614,6 +642,13 @@ main {
     flex: none; /* la label non si fa restringere sotto la sua misura */
   }
 
+  /* -------------------------------------------SU DI ME------------------------------------------- */
+  .cv-link,
+  .portfolio-link {
+    margin-left: 0;
+    text-align: center;
+  }
+
   /* -------------------------------------------FOOTER------------------------------------------- */
   .footer-bottom {
     display: flex;
@@ -621,8 +656,63 @@ main {
     gap: 1rem;
   }
 
-  /* spazio sotto il footer quando c'è lavori aperta */
+  /* spazio sotto il footer quando c'è 'lavori' aperta */
   body:has(#lavori[open]) footer {
     padding-bottom: 4rem;
   }
+}
+
+/* -------------------------------------------ENTRANCE------------------------------------------- */
+/* Gli elementi dell'hero hanno una dissolvenza sfalsata (ritardi diversi):
+   quando l'intro finisce e si toglie la classe is-intro, compaiono in ordine. */
+.statement {
+  transition: opacity 0.6s ease 0.2s;
+}
+.tagline {
+  transition: opacity 0.6s ease 0.45s;
+}
+.hero img {
+  transition: opacity 0.6s ease 0.7s;
+}
+
+/* Durante l'intro sono nascosti, in attesa. La rivelazione avviene TOGLIENDO
+   is-intro (in JS): tornano a opacity 1 di default → niente dipendenza dall'ordine. */
+body.is-intro .statement,
+body.is-intro .tagline,
+body.is-intro .hero img {
+  opacity: 0;
+}
+
+/* Velo mattone a tutto schermo con lo statement centrato. */
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: var(--brick);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  transition: opacity 0.9s ease;
+}
+
+.intro-statement {
+  margin: 0;
+  max-width: 55ch;
+  text-align: center;
+  text-transform: uppercase;
+  color: var(--paper); /* testo chiaro sul mattone */
+  font-size: 0.875rem;
+  line-height: 1.25;
+  transition: transform 0.9s ease;
+}
+
+/* USCITA (classe intro-done): il velo sfuma e la copia dello statement scende
+   verso il suo posto. Il contenuto vero lo rivela il JS togliendo is-intro. */
+body.intro-done .intro {
+  opacity: 0;
+  pointer-events: none;
+}
+body.intro-done .intro-statement {
+  transform: translateY(35vh); /* deriva verso il basso, dove sta lo statement vero */
 }

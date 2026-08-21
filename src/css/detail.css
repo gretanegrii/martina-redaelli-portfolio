@@ -241,12 +241,19 @@ body.is-zoomed .zoom-close {
   margin: 0;
   margin: 2rem 0 0;
 }
+
 .links a {
   color: inherit;
   text-decoration: none;
 }
+
 .links a:hover {
   text-decoration: underline;
+}
+
+/* il contatore N/totale è solo per mobile: di default (desktop) nascosto */
+.counter {
+  display: none;
 }
 
 /* -------------------------------------------------------------------------RESPONSIVE----------------------------------------------------------------------------------- */
@@ -274,7 +281,17 @@ body.is-zoomed .zoom-close {
   }
 
   .counter {
+    display: block; /* su mobile il contatore si vede */
     margin-top: 0.5rem;
+  }
+
+  /* niente zoom su mobile (resta solo su desktop) */
+  .zoom {
+    display: none;
+  }
+
+  .arrow {
+    display: none;
   }
 
   /* -------------------------------------------FOOTER------------------------------------------- */

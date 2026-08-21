@@ -12,13 +12,12 @@
 /* Entrata: il contenuto entra salendo e dissolvendo a OGNI caricamento pagina.
    Metodo semplice e affidabile (animazione sul body). */
 body {
-  animation: entrata-pagina 0.8s ease-out both;
+  animation: entrata-pagina 0.8s ease-out backwards;
 }
 
 @keyframes entrata-pagina {
   from {
     opacity: 0;
-    transform: translateY(24px);
   }
 }
 

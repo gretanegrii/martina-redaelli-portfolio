@@ -5,24 +5,20 @@ article {
 }
 
 h1 {
-  font-size: 2.25rem;
-  line-height: 2.5rem;
-  letter-spacing: -1%;
+  font-size: 4rem;
+  line-height: 3.5rem;
+  text-align: center;
   text-transform: uppercase;
+  margin-top: 3rem;
   margin-bottom: 1rem;
 }
 
-h2 {
-  margin: 2rem 0;
-  font-size: 1.5rem;
-  text-transform: uppercase;
-}
-
-time {
+.essay-year {
   display: block;
   margin-bottom: 1.5rem;
-  font-size: 1.25rem;
+  font-size: 2rem;
   font-weight: 500;
+  text-align: center;
   text-transform: uppercase;
 }
 
@@ -32,6 +28,12 @@ time::before {
 
 time::after {
   content: "]";
+}
+
+h2 {
+  margin: 2rem 0;
+  font-size: 1.5rem;
+  text-transform: uppercase;
 }
 
 h3 {
@@ -71,7 +73,13 @@ figcaption {
   line-height: 1.4;
   color: var(--ink-soft);
   margin-top: 0.6rem;
-  text-align: center;
+  text-align: left;
+}
+
+/* la figura stringe sull'immagine, così la didascalia (left) si allinea a lei
+   invece che al bordo della colonna larga */
+figure.portrait {
+  max-width: 500px;
 }
 
 figure.portrait img {
@@ -107,4 +115,8 @@ article sup a {
   font-weight: 500;
   font-style: italic;
   color: inherit; /* eredita l'inchiostro del testo, basta blu */
+}
+
+blockquote p {
+  font-style: italic;
 }

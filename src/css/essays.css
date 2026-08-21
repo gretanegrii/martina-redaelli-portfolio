@@ -120,3 +120,19 @@ article sup a {
 blockquote p {
   font-style: italic;
 }
+
+.related-work {
+  font-family: var(--font-main);
+  font-size: 1rem;
+  text-align: center;
+  letter-spacing: -2%;
+}
+
+.related-work a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.related-work a:hover {
+  text-decoration: underline;
+}

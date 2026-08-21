@@ -248,3 +248,37 @@ body.is-zoomed .zoom-close {
 .links a:hover {
   text-decoration: underline;
 }
+
+/* -------------------------------------------------------------------------RESPONSIVE----------------------------------------------------------------------------------- */
+@media (max-width: 600px) {
+  /* tutto in colonna: caption sopra, visore sotto, rimando in fondo */
+  article,
+  article:has(.exhibited-works) {
+    grid-template-columns: 1fr;
+    min-height: auto; /* niente 80vh forzato: si impila naturale */
+    align-items: start; /* in cima, non centrato in verticale */
+  }
+
+  .caption {
+    margin-bottom: 3rem;
+  }
+
+  /* -------------------------------------------VIEWER------------------------------------------- */
+  .viewer img,
+  .viewer video {
+    max-width: 100%;
+  }
+
+  .viewer {
+    margin-bottom: 3rem;
+  }
+
+  .counter {
+    margin-top: 0.5rem;
+  }
+
+  /* -------------------------------------------FOOTER------------------------------------------- */
+  footer {
+    margin-top: 15rem;
+  }
+}

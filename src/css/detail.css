@@ -113,16 +113,26 @@ article button:hover {
   text-decoration: underline;
 }
 
-/* 1. lo sfondo opaco: un velo scuro su tutta la finestra */
-body.is-zoomed .viewer::before {
+/* 1. lo sfondo opaco: un velo scuro su tutta la finestra.
+   esiste SEMPRE (a opacity 0) così può SFUMARE invece di apparire secco */
+.viewer::before {
   content: "";
   position: fixed;
   inset: 0; /* copre tutto lo schermo */
   background: rgba(20, 20, 20, 0.9);
   z-index: 10; /* sopra la pagina, sotto la foto */
+  opacity: 0; /* a riposo: invisibile */
+  pointer-events: none; /* invisibile E non ruba i click */
+  transition: opacity 0.25s ease; /* la dissolvenza */
+}
+/* col click il velo sale da 0 a 1 → sfuma dentro */
+body.is-zoomed .viewer::before {
+  opacity: 1;
 }
 
-/* 2. la foto attiva emerge grande e centrata, sopra il velo */
+/* 2. la foto attiva emerge grande e centrata, sopra il velo.
+   la posizione salta da inline a fixed (non si può animare) → la facciamo
+   COMPARIRE con un keyframe: dissolvenza + un filo di scala */
 body.is-zoomed .viewer img.is-active {
   position: fixed;
   top: 50%;
@@ -132,6 +142,28 @@ body.is-zoomed .viewer img.is-active {
   max-width: 90vw;
   width: auto;
   z-index: 11; /* sopra il velo */
+  animation: zoom-in 0.25s ease;
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* chi ha chiesto meno animazioni: niente dissolvenze */
+@media (prefers-reduced-motion: reduce) {
+  .viewer::before {
+    transition: none;
+  }
+  body.is-zoomed .viewer img.is-active {
+    animation: none;
+  }
 }
 
 /* 3. il bottone Zoom resta cliccabile SOPRA il velo (per chiudere) */

@@ -548,3 +548,25 @@ body:has(.views input[value="grid"]:checked) figcaption {
 .contacts dd a {
   color: inherit;
 }
+
+.cv-link a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.cv-link {
+  margin-top: 3rem;
+  margin-left: 4rem;
+}
+
+.cv-link::before {
+  content: "[";
+}
+
+.cv-link::after {
+  content: "]";
+}
+
+.cv-link a:hover {
+  text-decoration: underline;
+}

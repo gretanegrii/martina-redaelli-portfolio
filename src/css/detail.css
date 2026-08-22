@@ -63,11 +63,6 @@ body.verso-destra {
   max-width: 400px;
 }
 
-.exhibited-works {
-  text-decoration: underline;
-  text-underline-offset: 0.15em;
-}
-
 .spec {
   list-style: none;
   margin: 0;
@@ -92,6 +87,20 @@ body.verso-destra {
   width: fit-content;
   text-align: right;
   position: relative; /* diventa il riferimento per piazzare le frecce SOPRA l'immagine */
+}
+
+/* PAGINA VIDEO (iframe Vimeo): il visore ha la stessa taglia delle immagini —
+   max 600px su desktop, tutta la larghezza su mobile — e l'iframe è 16:9.
+   Senza questo l'iframe cadeva alla dimensione di default (~300px). */
+.viewer:has(iframe) {
+  width: min(600px, 100%);
+}
+
+.viewer iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  display: block;
 }
 
 /* -------------------------------------------ZOOM BUTTON------------------------------------------- */
@@ -231,25 +240,54 @@ body.is-zoomed .zoom-close {
 } /* appaiono quando il mouse è sull'immagine */
 
 /* -------------------------------------------EXHIBITED WORKS------------------------------------------- */
+/* colonna destra delle mostre: due gruppi staccati —
+   [Opere esposte + link] in alto, [ruolo + nota] in grigio sotto */
+.exhibited-works {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem; /* lo stacco TRA i due gruppi */
+}
+
+.ex-works,
+.mostra-ruolo,
+.mostra-nota {
+  margin: 0;
+}
+
+.mostra-nota {
+  margin-top: 0.25rem; /* la nota sotto il ruolo, vicina */
+}
+
+/* il blocco crediti (ruolo + nota) più tenue */
+.ex-credits {
+  color: var(--ink-soft);
+}
+
 .exhibited-works a {
   color: inherit;
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color 0.25s ease;
 }
 
 .exhibited-works a:hover {
-  text-decoration: underline;
+  text-decoration-color: transparent;
 }
 
 .links {
   list-style: none;
   padding: 0;
-  margin: 0;
-  margin: 2rem 0 0;
+  margin: 1rem 0 0; /* stacco medio: link esterni distinti da "Opere esposte" */
 }
 
 .links a {
   text-decoration: underline;
   text-underline-offset: 0.15em;
+  transition: text-decoration-color 0.25s ease;
+}
+
+.links a:hover {
+  text-decoration-color: transparent;
 }
 
 /* il contatore N/totale è solo per mobile: di default (desktop) nascosto */

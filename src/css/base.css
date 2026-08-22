@@ -171,10 +171,14 @@ footer {
 
 footer a {
   margin-top: 10px;
-  text-decoration: none;
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 0.15em;
+  transition: text-decoration-color 0.25s ease;
+}
+
+footer a:hover {
+  text-decoration-color: transparent;
 }
 
 .footer-top {

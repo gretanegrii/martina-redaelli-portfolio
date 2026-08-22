@@ -63,6 +63,11 @@ body.verso-destra {
   max-width: 400px;
 }
 
+.exhibited-works {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
 .spec {
   list-style: none;
   margin: 0;
@@ -243,12 +248,8 @@ body.is-zoomed .zoom-close {
 }
 
 .links a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.links a:hover {
   text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 /* il contatore N/totale è solo per mobile: di default (desktop) nascosto */

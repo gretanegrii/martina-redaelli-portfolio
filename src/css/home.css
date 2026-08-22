@@ -40,6 +40,8 @@ footer {
   font-weight: 400;
   text-transform: uppercase;
   list-style: none;
+  margin: 0;
+  padding: 0; /* il <ul> tiene il padding sinistro di default anche con list-style:none */
 }
 
 .tagline li {
@@ -573,6 +575,10 @@ main {
 @media (max-width: 600px) {
   .hero img {
     width: 50%;
+  }
+
+  .tagline {
+    text-align: center;
   }
 
   /* no toggle */

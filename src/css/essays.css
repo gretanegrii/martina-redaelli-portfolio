@@ -129,12 +129,8 @@ blockquote p {
 }
 
 .related-work a {
-  text-decoration: none;
-  color: inherit;
-}
-
-.related-work a:hover {
   text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 /* -------------------------------------------------------------------------RESPONSIVE----------------------------------------------------------------------------------- */

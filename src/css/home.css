@@ -19,20 +19,25 @@ html {
   margin-block: auto;
 }
 
-/* -------------------------------------------DUE SCHERMATE------------------------------------------- */
+/* -------------------------------------------LAYOUT PAGINA------------------------------------------- */
 body {
   display: flex;
   flex-direction: column;
-  min-height: 200vh;
 }
 
+/* il footer SEGUE il contenuto con un po' d'aria (non più incollato in fondo
+   alla "seconda schermata"). Il numero è la manopola per alzarlo/abbassarlo. */
 footer {
-  margin-top: auto; /* spinge il footer in fondo alla seconda schermata */
+  margin-top: 27rem;
+}
+
+main {
+  margin-bottom: 2rem; /* respiro minimo tra il contenuto e il footer */
 }
 
 /* -------------------------------------------STATEMENT------------------------------------------- */
 .statement {
-  max-width: 55ch; /* perchè ch?? */
+  max-width: 55ch;
   margin-inline: auto;
   margin-bottom: 2rem;
   font-size: 0.875rem;
@@ -584,10 +589,6 @@ body:has(.views input[value="grid"]:checked) figcaption {
 }
 
 /* -------------------------------------------------------------------------RESPONSIVE----------------------------------------------------------------------------------- */
-main {
-  margin-bottom: 2rem;
-}
-
 @media (max-width: 600px) {
   .hero img {
     width: 50%;
@@ -736,5 +737,7 @@ body.intro-done .intro {
   pointer-events: none;
 }
 body.intro-done .intro-statement {
-  transform: translateY(35vh); /* deriva verso il basso, dove sta lo statement vero */
+  transform: translateY(
+    35vh
+  ); /* deriva verso il basso, dove sta lo statement vero */
 }

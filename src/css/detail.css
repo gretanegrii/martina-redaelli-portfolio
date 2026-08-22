@@ -5,7 +5,7 @@ article {
   align-items: center;
   justify-content: center;
   margin-top: 40px;
-  min-height: 80vh;
+  min-height: 60vh;
 }
 
 article:has(.exhibited-works) {
@@ -14,18 +14,6 @@ article:has(.exhibited-works) {
 
 article:has(.exhibited-works) .viewer {
   justify-self: center;
-}
-
-.caption {
-  grid-column: 1fr;
-}
-
-.viewer {
-  grid-column: 2fr;
-}
-
-.exhibited-works {
-  grid-template-columns: 1fr;
 }
 
 body.verso-sinistra {
@@ -295,6 +283,13 @@ body.is-zoomed .zoom-close {
   display: none;
 }
 
+/* -------------------------------------------FOOTER------------------------------------------- */
+/* stacco ragionevole per le pagine-opera: i 380px di base.css sono un valore
+   "da home" che qui spingeva il footer troppo giù, isolandolo in fondo. */
+footer {
+  margin-top: 8rem;
+}
+
 /* -------------------------------------------------------------------------RESPONSIVE----------------------------------------------------------------------------------- */
 @media (max-width: 600px) {
   /* tutto in colonna: caption sopra, visore sotto, rimando in fondo */
@@ -335,6 +330,6 @@ body.is-zoomed .zoom-close {
 
   /* -------------------------------------------FOOTER------------------------------------------- */
   footer {
-    margin-top: 15rem;
+    margin-top: 4rem;
   }
 }

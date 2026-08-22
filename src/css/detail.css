@@ -333,3 +333,14 @@ footer {
     margin-top: 4rem;
   }
 }
+
+@media (max-width: 900px) {
+  article:has(.exhibited-works) {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .exhibited-works {
+    grid-column: 1 / -1; /* riga a sé, sotto caption+visore */
+    margin-top: 2.5rem;
+  }
+}

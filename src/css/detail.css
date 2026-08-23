@@ -250,12 +250,12 @@ body.is-zoomed .zoom-close {
 }
 
 .ex-works,
-.mostra-ruolo,
-.mostra-nota {
+.exhibition-role,
+.exhibition-note {
   margin: 0;
 }
 
-.mostra-nota {
+.exhibition-note {
   margin-top: 0.25rem; /* la nota sotto il ruolo, vicina */
 }
 

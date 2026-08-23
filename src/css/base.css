@@ -140,6 +140,12 @@ header a::after {
   content: "]";
 }
 
+/* Il toggle lingua resta senza parentesi [ ], come nella home. */
+header .lang-toggle a::before,
+header .lang-toggle a::after {
+  content: none;
+}
+
 header a:hover {
   text-decoration: underline;
 }
@@ -156,7 +162,12 @@ header a:hover {
   cursor: pointer;
 }
 
-.lang-toggle span:hover {
+.lang-toggle a {
+  color: var(--ink-soft);
+  text-decoration: none;
+}
+
+.lang-toggle a:hover {
   text-decoration: underline;
 }
 
@@ -216,6 +227,12 @@ footer a:hover {
 
 .footer-copyright {
   text-align: center;
+}
+
+/* i crediti (Design/Code, Greta Negri) a filo del margine destro:
+   il blocco è già a destra, ma il testo dentro era allineato a sinistra */
+.credits {
+  text-align: right;
 }
 
 /* niente puntinato sotto le abbreviazioni (NABA); il tooltip title resta */

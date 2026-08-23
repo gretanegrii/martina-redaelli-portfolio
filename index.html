@@ -17,6 +17,7 @@
   </head>
 
   <body>
+    <!-------------------------------------------HERO------------------------------------------->
     <header class="hero">
       <ul class="tagline">
         <li>Artista</li>
@@ -24,7 +25,7 @@
         <li>Curatrice</li>
       </ul>
       <img
-        src="./assets/img/autoritratto.png"
+        src="../assets/img/autoritratto.png"
         alt="Illustrazione Martina Redaelli"
       />
       <p class="statement">
@@ -33,6 +34,7 @@
       </p>
     </header>
 
+    <!-------------------------------------------SITE-HEADER------------------------------------------->
     <div class="site-header" id="top">
       <div class="catalog-bar">
         <h1>
@@ -42,12 +44,16 @@
           >
         </h1>
 
-        <button class="lang-toggle"><span>IT</span> / <span>EN</span></button>
+        <p class="lang-toggle">
+          <span class="lang-current">IT</span> /
+          <a href="./en/index.html#top">EN</a>
+        </p>
       </div>
     </div>
 
     <main>
-      <details name="sezioni" class="lavori" id="lavori">
+      <!-------------------------------------------WORKS------------------------------------------->
+      <details id="works">
         <summary><h2>Lavori</h2></summary>
         <div class="works-controls">
           <fieldset class="filters">
@@ -89,9 +95,9 @@
           </fieldset>
         </div>
         <div class="gallery-grid">
-          <!-- Postcards They Won’t Receive -->
+          <!-- Postcards They Won't Receive -->
           <a
-            href="works/postcards-they-wont-receive.html"
+            href="../works/postcards-they-wont-receive.html"
             class="art-card"
             data-year="2025"
           >
@@ -108,8 +114,8 @@
                 </h3>
                 <time datetime="2025" class="art-date">2025</time>
                 <div class="art-details">
-                  <p>serie di tre cartoline</p>
-                  <p>stampa digitale su cartolina, 105 × 148 mm</p>
+                  <p>Serie di tre cartoline</p>
+                  <p>Stampa digitale su cartolina, 105 × 148 mm</p>
                 </div>
               </figcaption>
             </figure>
@@ -137,19 +143,14 @@
                 </h3>
                 <time datetime="2024" class="art-date">2024</time>
                 <div class="art-details">
-                  <p>
-                    realizzato per la mostra <cite>Diversi Presenti</cite>
-                    <time datetime="2024">2024</time>
-                  </p>
-                  <p>
-                    quattro francobolli, 3,5 × 3 cm ciascuno, stampa su carta
-                    adesiva
-                  </p>
+                  <p>4 francobolli, 3,5 × 3 cm ciascuno</p>
+                  <p>Stampa su carta adesiva</p>
                 </div>
               </figcaption>
             </figure>
           </a>
-          <!-- Hostium Rabies Diruit - Ruins -->
+
+          <!-- Ruins -->
           <a
             href="works/ruins.html"
             class="art-card"
@@ -165,19 +166,16 @@
               </div>
               <figcaption>
                 <h3 class="art-title">
-                  <cite><i lang="en">Ruins</i></cite>
+                  <cite lang="en">Ruins</cite>
                 </h3>
                 <time datetime="2024" class="art-date">2024</time>
                 <div class="art-details">
-                  <p>
-                    realizzato per la mostra Diversi Presenti
-                    <time datetime="2024">2024</time>
-                  </p>
-                  <p>stampa su forex, 100 × 70 cm</p>
+                  <p>Stampa su forex, 100 × 70 cm</p>
                 </div>
               </figcaption>
             </figure>
           </a>
+
           <!-- Una Cosa Alla Volta -->
           <a
             href="works/una-cosa-alla-volta.html"
@@ -196,12 +194,17 @@
                 <h3 class="art-title"><cite>Una Cosa Alla Volta</cite></h3>
                 <time datetime="2024" class="art-date">2024</time>
                 <div class="art-details">
-                  <p>video 4' 19''</p>
+                  <p>Video 4' 18''</p>
+                  <p>
+                    Cortometraggio realizzato in collaborazione con Giorgia
+                    Checcucci
+                  </p>
                 </div>
               </figcaption>
             </figure>
           </a>
-          <!-- Chamber of Reflection -->
+
+          <!-- Chamber Of Reflection -->
           <a
             href="works/chamber-of-reflection.html"
             class="art-card"
@@ -220,12 +223,13 @@
                 </h3>
                 <time datetime="2026" class="art-date">2026</time>
                 <div class="art-details">
-                  <p>libro d’artista, 15 × 18 cm</p>
-                  <p>stampa digitale su carta e carta trasparente</p>
+                  <p>Libro d’artista, 15 × 18 cm</p>
+                  <p>Stampa digitale su carta e carta trasparente</p>
                 </div>
               </figcaption>
             </figure>
           </a>
+
           <!-- Concrete Forest -->
           <a
             href="works/concrete-forest.html"
@@ -245,12 +249,13 @@
                 </h3>
                 <time datetime="2025" class="art-date">2025 - in corso</time>
                 <div class="art-details">
-                  <p>serie di installazioni,</p>
-                  <p>fotografia digitale su plexiglas tagliato a laser</p>
+                  <p>Serie di installazioni</p>
+                  <p>Fotografia digitale su plexiglas tagliato a laser</p>
                 </div>
               </figcaption>
             </figure>
           </a>
+
           <!-- Il Secondo Stipendio -->
           <a
             href="works/il-secondo-stipendio.html"
@@ -269,12 +274,13 @@
                 <h3 class="art-title"><cite>Il Secondo Stipendio</cite></h3>
                 <time datetime="2024" class="art-date">2024</time>
                 <div class="art-details">
-                  <p>oggetti rinvenuti</p>
+                  <p>Oggetti rinvenuti</p>
                   <p>52 × 25 cm</p>
                 </div>
               </figcaption>
             </figure>
           </a>
+
           <!-- La Vita Intima -->
           <a href="works/la-vita-intima.html" class="art-card" data-year="2023">
             <figure>
@@ -297,7 +303,8 @@
         </div>
       </details>
 
-      <details name="sezioni" id="saggi">
+      <!-------------------------------------------ESSAYS------------------------------------------->
+      <details id="essays">
         <summary><h2>Saggi</h2></summary>
         <div class="essays-rows">
           <section class="essay-year">
@@ -347,7 +354,8 @@
         </div>
       </details>
 
-      <details name="sezioni" id="mostre">
+      <!-------------------------------------------EXHIBITIONS------------------------------------------->
+      <details id="exhibitions">
         <summary><h2>Mostre</h2></summary>
         <div class="exhibitions-rows">
           <section class="exhibition-year">
@@ -378,7 +386,8 @@
         </div>
       </details>
 
-      <details name="sezioni">
+      <!-------------------------------------------ABOUT------------------------------------------->
+      <details>
         <summary><h2>Su di me</h2></summary>
         <div class="about-content">
           <section class="about-block">
@@ -476,7 +485,7 @@
         </div>
       </details>
 
-      <details name="sezioni">
+      <details>
         <summary><h2>Contatti</h2></summary>
         <div class="contact">
           <dl class="contacts">
@@ -529,6 +538,7 @@
       </details>
     </main>
 
+    <!-------------------------------------------FOOTER------------------------------------------->
     <footer>
       <div class="footer-social">
         <a href="https://substack.com/@ellyreda" target="_blank" rel="noopener"
@@ -561,6 +571,7 @@
       </div>
     </footer>
 
+    <!-------------------------------------------JS------------------------------------------->
     <script src="src/js/intro.js"></script>
     <script src="src/js/main.js" defer></script>
   </body>

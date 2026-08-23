@@ -4,8 +4,18 @@ article {
   grid-template-columns: 1fr 2fr;
   align-items: center;
   justify-content: center;
-  margin-top: 40px;
-  min-height: 60vh;
+}
+
+/* main riempie sempre almeno una schermata e CENTRA l'opera al suo interno:
+   così l'opera resta centrata nella viewport e il footer cade SOTTO la piega,
+   a prescindere dalla lunghezza del testo (IT più lungo, EN più corto). */
+main {
+  /* 100vh meno lo spazio che l'header occupa sopra main (margine pagina +
+     header ≈ 40px): così l'opera è centrata rispetto alla VIEWPORT e il footer
+     resta appena sotto la piega. */
+  min-height: calc(100vh - 40px);
+  display: grid;
+  align-content: center;
 }
 
 article:has(.exhibited-works) {
@@ -229,8 +239,11 @@ body.is-zoomed .zoom-close {
 
 /* -------------------------------------------EXHIBITED WORKS------------------------------------------- */
 /* colonna destra delle mostre: due gruppi staccati —
-   [Opere esposte + link] in alto, [ruolo + nota] in grigio sotto */
-.exhibited-works {
+   [Opere esposte + link] in alto, [ruolo + nota] in grigio sotto.
+   Solo le pagine-MOSTRA hanno i gruppi (.ex-group): lì serve la colonna con
+   stacco. Le pagine-OPERA hanno solo una frase di rimando, che deve restare
+   testo che fluisce inline (niente flex, altrimenti si spezza in righe). */
+.exhibited-works:has(.ex-group) {
   display: flex;
   flex-direction: column;
   gap: 1.75rem; /* lo stacco TRA i due gruppi */
@@ -290,6 +303,21 @@ footer {
   margin-top: 8rem;
 }
 
+/* -------------------------------------------TABLET------------------------------------------- */
+/* sotto i 900px le pagine a 3 colonne passano a 2 (caption | visore) e il blocco
+   destro scende a tutta larghezza. DEVE stare PRIMA del mobile (≤600), se no a
+   larghezza piccola vince questo e le opere restano a 2 colonne sul telefono. */
+@media (max-width: 900px) {
+  article:has(.exhibited-works) {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .exhibited-works {
+    grid-column: 1 / -1; /* riga a sé, sotto caption+visore */
+    margin-top: 2.5rem;
+  }
+}
+
 /* -------------------------------------------------------------------------RESPONSIVE----------------------------------------------------------------------------------- */
 @media (max-width: 600px) {
   /* tutto in colonna: caption sopra, visore sotto, rimando in fondo */
@@ -331,16 +359,5 @@ footer {
   /* -------------------------------------------FOOTER------------------------------------------- */
   footer {
     margin-top: 4rem;
-  }
-}
-
-@media (max-width: 900px) {
-  article:has(.exhibited-works) {
-    grid-template-columns: 1fr 2fr;
-  }
-
-  .exhibited-works {
-    grid-column: 1 / -1; /* riga a sé, sotto caption+visore */
-    margin-top: 2.5rem;
   }
 }

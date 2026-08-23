@@ -1,7 +1,5 @@
 /* -------------------------------------------HERO------------------------------------------- */
-/* scroll-snap: risalendo, la pagina si "posa" sulla tratteggiata (site-header)
-   invece di ripiombare sull'hero. proximity = gentile: snappa solo quando ti
-   fermi vicino a un punto, non ruba lo scroll. */
+/* AGGANCIO  */
 html {
   scroll-snap-type: y proximity;
 }
@@ -28,7 +26,7 @@ body {
 /* il footer SEGUE il contenuto con un po' d'aria (non più incollato in fondo
    alla "seconda schermata"). Il numero è la manopola per alzarlo/abbassarlo. */
 footer {
-  margin-top: 27rem;
+  margin-top: 25.5rem;
 }
 
 main {
@@ -646,7 +644,7 @@ body:has(.views input[value="grid"]:checked) figcaption {
   }
 
   /* -------------------------------------------FILTERS------------------------------------------- */
-  #lavori[open] .filters {
+  #works[open] .filters {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -679,8 +677,17 @@ body:has(.views input[value="grid"]:checked) figcaption {
     gap: 1rem;
   }
 
+  footer {
+    margin-top: 30rem;
+  }
+
+  /* footer impilato: i crediti tornano a sinistra, sotto Milano/email */
+  .credits {
+    text-align: left;
+  }
+
   /* spazio sotto il footer quando c'è 'lavori' aperta */
-  body:has(#lavori[open]) footer {
+  body:has(#works[open]) footer {
     padding-bottom: 4rem;
   }
 }

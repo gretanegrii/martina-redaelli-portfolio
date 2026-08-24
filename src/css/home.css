@@ -588,7 +588,7 @@ body:has(.views input[value="grid"]:checked) figcaption {
   transition: opacity 0.6s ease 0.2s;
 }
 .tagline {
-  transition: opacity 0.6s ease 0.45s;
+  transition: opacity 0.6s ease 0.7s;
 }
 .hero img {
   transition: opacity 0.6s ease 0.7s;

@@ -737,6 +737,10 @@ body.intro-done .intro-statement {
   }
 
   /* -------------footer------------- */
+  footer {
+    /* Aggiunge respiro in fondo ed evita che la barra di Safari copra il testo */
+    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 20px));
+  }
 
   .footer-bottom {
     display: flex;
@@ -750,7 +754,7 @@ body.intro-done .intro-statement {
 
   /* spazio sotto il footer quando c'è 'lavori' aperta */
   body:has(#works[open]) footer {
-    padding-bottom: 4rem;
+    padding-bottom: calc(4rem + env(safe-area-inset-bottom, 20px));
   }
 }
 

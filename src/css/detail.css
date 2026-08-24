@@ -47,6 +47,11 @@ body.verso-destra {
   text-transform: uppercase;
 }
 
+/* solo l'anno del titolo (il time subito dopo l'h1), non quelli in spec/testo */
+.caption h1 + time {
+  font-weight: 500;
+}
+
 .caption time::before {
   content: "[";
 }

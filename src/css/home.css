@@ -4,7 +4,7 @@ html {
 }
 
 .hero {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -641,6 +641,14 @@ body.intro-done .intro-statement {
 /* -------------------------------------------MOBILE------------------------------------------- */
 @media (max-width: 600px) {
   /* -------------hero------------- */
+  .hero {
+    min-height: 100dvh;
+  }
+
+  main {
+    margin-bottom: 0;
+  }
+
   .hero img {
     width: 50%;
   }

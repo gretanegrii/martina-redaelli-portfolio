@@ -95,20 +95,24 @@ figure.portrait img {
 }
 
 /* -------------------------------------------NOTE + BIBLIOGRAFIA------------------------------------------- */
-.note,
-.bibliografia {
+blockquote p {
+  font-style: italic;
+}
+
+.notes,
+.works-cited {
   margin-top: 4rem;
   padding-top: 1.5rem;
 }
 
-.note h2,
-.bibliografia h2 {
+.notes h2,
+.works-cited h2 {
   margin: 0 0 1rem;
   font-size: 0.75rem;
 }
 
-.note ol,
-.bibliografia ul {
+.notes ol,
+.works-cited ul {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -117,23 +121,37 @@ figure.portrait img {
   color: var(--ink-soft);
 }
 
-article sup a {
-  font-weight: 500;
-  font-style: italic;
-  color: inherit;
+.notes a,
+.works-cited a {
+  color: var(--ink-soft);
 }
 
-blockquote p {
-  font-style: italic;
+.notes a,
+.works-cited a:hover {
+  text-decoration: none;
+}
+
+article sup a {
+  font-weight: 500;
+  color: inherit;
+  text-decoration: none;
+}
+
+article sup a::before {
+  content: "[";
+}
+
+article sup a::after {
+  content: "]";
 }
 
 .related-work {
   font-family: var(--font-main);
   font-size: 1rem;
-  line-height: 1.35; /* la frase è di 2 righe: interlinea stretta così sta unita */
+  line-height: 1.35;
   text-align: center;
-  letter-spacing: -0.02em; /* NON % — letter-spacing vuole una lunghezza */
-  margin: 0 0 0.5rem; /* stretto all'[anno] sotto, cluster con la testata */
+  letter-spacing: -0.02em;
+  margin: 0 0 0.5rem;
 }
 
 .related-work a {

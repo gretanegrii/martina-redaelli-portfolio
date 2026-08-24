@@ -657,7 +657,16 @@ body.intro-done .intro-statement {
   .tagline {
     text-align: center;
   }
+  /* -------------site-header------------- */
+  .site-header {
+    position: relative;
+    margin-bottom: 1rem; /* Ridotto da 2.25em per alzare la lista */
+    padding-top: 0.25rem;
+  }
 
+  details summary h2 {
+    margin-bottom: 0.25rem; /* Ridotto da 0.5rem per accorciare il menu */
+  }
   /* -------------works------------- */
   /* .filters */
   #works[open] .filters {
@@ -737,10 +746,6 @@ body.intro-done .intro-statement {
   }
 
   /* -------------footer------------- */
-  footer {
-    /* Aggiunge respiro in fondo ed evita che la barra di Safari copra il testo */
-    padding-bottom: calc(2rem + env(safe-area-inset-bottom, 20px));
-  }
 
   .footer-bottom {
     display: flex;
@@ -754,7 +759,11 @@ body.intro-done .intro-statement {
 
   /* spazio sotto il footer quando c'è 'lavori' aperta */
   body:has(#works[open]) footer {
-    padding-bottom: calc(4rem + env(safe-area-inset-bottom, 20px));
+    padding-bottom: 4rem;
+  }
+
+  footer {
+    padding-bottom: calc(1.5rem + env(safe-area-inset-bottom, 20px));
   }
 }
 

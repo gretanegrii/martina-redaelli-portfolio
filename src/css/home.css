@@ -28,6 +28,10 @@ main {
   margin-bottom: 4rem;
 }
 
+footer {
+  scroll-snap-align: end; /* Permette al browser di fermare lo scroll mostrando il footer */
+}
+
 /* -------------------------------------------TAGLINE------------------------------------------- */
 .tagline {
   font-size: 0.9375rem;
@@ -749,6 +753,6 @@ body.intro-done .intro-statement {
   }
 
   main {
-    margin-bottom: 20.5rem;
+    margin-bottom: 2rem;
   }
 }

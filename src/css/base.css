@@ -1,0 +1,236 @@
+/* -------------------------------------------TOKENS------------------------------------------- */
+:root {
+  --paper: #f8f8f8;
+  --ink: #141414;
+  --ink-soft: #6b6b6b;
+  --brick: #9e4635;
+  --font-display: "Jost", sans-serif;
+  --font-main: "IBM Plex Mono", monospace;
+  --font-article: "IBM Plex Sans", sans-serif;
+}
+
+/* -------------------------------------------TRANSIZIONI TRA PAGINE------------------------------------------- */
+body {
+  animation: entrata-pagina 0.8s ease-out backwards;
+}
+
+@keyframes entrata-pagina {
+  from {
+    opacity: 0;
+  }
+}
+
+/* rispetta chi ha ridotto le animazioni nelle preferenze di sistema */
+@media (prefers-reduced-motion: reduce) {
+  body {
+    animation: none;
+  }
+}
+
+/* -------------------------------------------FONTS------------------------------------------- */
+/* ibm-plex-mono-light */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 300;
+  src: url("../../assets/fonts/ibm-plex-mono-light.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* ibm-plex-mono-regular */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../assets/fonts/ibm-plex-mono-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* ibm-plex-mono-500 */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "IBM Plex Mono";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../../assets/fonts/ibm-plex-mono-500.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* ibm-plex-sans-regular */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "IBM Plex Sans";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../../assets/fonts/ibm-plex-sans-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* ibm-plex-sans-italic */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "IBM Plex Sans";
+  font-style: italic;
+  font-weight: 400;
+  src: url("../../assets/fonts/ibm-plex-sans-italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* jost-900 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Jost";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../../assets/fonts/jost-900.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* -------------------------------------------RESET------------------------------------------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+p,
+figure {
+  margin: 0;
+}
+
+html {
+  font-family: var(--font-main);
+  margin: 20px;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  text-underline-offset: 0.2em;
+}
+
+nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* -------------------------------------------CLOSE BUTTON + IT/EN------------------------------------------- */
+
+header:not(.hero) {
+  display: flex;
+  justify-content: space-between;
+}
+
+header:not(.hero) a {
+  font-size: 0.9375rem;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: inherit;
+}
+
+header a::before {
+  content: "[";
+}
+
+header a::after {
+  content: "]";
+}
+
+header a:hover {
+  text-decoration: underline;
+}
+
+header .lang-toggle a::before,
+header .lang-toggle a::after {
+  content: none;
+}
+
+.lang-toggle {
+  border: none;
+  background: none;
+  padding: 0;
+  margin: 0;
+  font-family: inherit;
+  font-size: 0.9375rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.lang-toggle a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.lang-toggle a:hover {
+  text-decoration: underline;
+}
+
+/* -------------------------------------------ABBR------------------------------------------- */
+abbr[title] {
+  text-decoration: none;
+}
+
+/* -------------------------------------------FOOTER------------------------------------------- */
+footer {
+  font-size: 0.75rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  margin-top: 380px;
+  border-top: 1px dashed var(--ink-soft);
+}
+
+footer a {
+  margin-top: 10px;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color 0.25s ease;
+}
+
+footer a:hover {
+  text-decoration-color: transparent;
+}
+
+.footer-top {
+  display: block;
+  text-align: center;
+}
+
+.footer-top::before {
+  content: "[ ";
+}
+
+.footer-top::after {
+  content: " ]";
+}
+
+.footer-top {
+  position: fixed;
+  bottom: 6rem;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.footer-top.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.footer-social,
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-copyright {
+  text-align: center;
+}
+
+.credits {
+  text-align: right;
+}

@@ -1,0 +1,8 @@
+.DS_Store
+.vscode/
+
+# materiali grezzi della cliente: restano in locale, non vanno su GitHub
+brief/
+
+# tooling locale: config del dev server, non va su GitHub
+.claude/

@@ -1,0 +1,388 @@
+/* -------------------------------------------LAYOUT------------------------------------------- */
+article {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  align-items: center;
+  justify-content: center;
+}
+
+main {
+  /* 100vh meno lo spazio che l'header occupa sopra main (margine pagina +
+     header ≈ 40px): così l'opera è centrata rispetto alla VIEWPORT e il footer
+     resta appena sotto la piega. */
+  min-height: calc(100vh - 40px);
+  display: grid;
+  align-content: center;
+}
+
+article:has(.work-relations) {
+  grid-template-columns: 1fr 2fr 1fr;
+}
+
+article:has(.work-relations) .viewer {
+  justify-self: center;
+}
+
+body.verso-sinistra {
+  cursor: w-resize;
+}
+body.verso-destra {
+  cursor: e-resize;
+}
+
+/* -------------------------------------------CAPTION------------------------------------------- */
+.caption {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.caption h1,
+.caption time,
+.spec {
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+}
+
+.caption h1 + time {
+  font-weight: 500;
+}
+
+.caption time::before {
+  content: "[";
+}
+
+.caption time::after {
+  content: "]";
+}
+
+.caption p,
+.work-relations {
+  font-size: 0.75rem;
+  max-width: 400px;
+}
+
+.spec {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  margin-bottom: 20px;
+}
+
+/* -------------------------------------------VIEWER------------------------------------------- */
+.viewer img,
+.viewer video {
+  max-width: 600px;
+  max-height: 80vh;
+  display: none;
+}
+
+.viewer img.is-active,
+.viewer video.is-active {
+  display: block;
+}
+
+.viewer {
+  width: fit-content;
+  text-align: right;
+  position: relative; /* diventa il riferimento per piazzare le frecce SOPRA l'immagine */
+}
+
+/* PAGINA VIDEO (iframe Vimeo): il visore ha la stessa taglia delle immagini —
+   max 600px su desktop, tutta la larghezza su mobile — e l'iframe è 16:9.
+   Senza questo l'iframe cadeva alla dimensione di default (~300px). */
+.viewer:has(iframe) {
+  width: min(600px, 100%);
+}
+
+.viewer iframe {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+  display: block;
+}
+
+/* il contatore N/totale è solo per mobile: di default (desktop) nascosto */
+.counter {
+  display: none;
+}
+
+/* -------------------------------------------ZOOM BUTTON------------------------------------------- */
+article button {
+  background: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  color: inherit;
+  cursor: pointer;
+  outline: none;
+  text-transform: uppercase;
+}
+
+article button::before {
+  content: "[";
+}
+
+article button::after {
+  content: "]";
+}
+
+article button:hover {
+  text-decoration: underline;
+}
+
+.viewer::before {
+  content: "";
+  position: fixed;
+  inset: 0; /* copre tutto lo schermo */
+  background: rgba(20, 20, 20, 0.9);
+  z-index: 10; /* sopra la pagina, sotto la foto */
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+/* col click il velo sale da 0 a 1 → sfuma dentro */
+body.is-zoomed .viewer::before {
+  opacity: 1;
+}
+
+/* 2. la foto attiva emerge grande e centrata, sopra il velo.
+   la posizione salta da inline a fixed (non si può animare) → la facciamo
+   COMPARIRE con un keyframe: dissolvenza + un filo di scala */
+body.is-zoomed .viewer img.is-active {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); /* la centra esatta */
+  max-height: 90vh; /* grande ma dentro lo schermo */
+  max-width: 90vw;
+  width: auto;
+  z-index: 11; /* sopra il velo */
+  animation: zoom-in 0.25s ease;
+}
+
+@keyframes zoom-in {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* chi ha chiesto meno animazioni: niente dissolvenze */
+@media (prefers-reduced-motion: reduce) {
+  .viewer::before {
+    transition: none;
+  }
+  body.is-zoomed .viewer img.is-active {
+    animation: none;
+  }
+}
+
+/* 3. il bottone Zoom resta cliccabile SOPRA il velo (per chiudere) */
+body.is-zoomed .zoom {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: 12; /* più alto di velo (10) e foto (11) */
+  display: none;
+}
+
+/* 4. la X di chiusura: nascosta normalmente */
+.zoom-close {
+  display: none;
+  font-family: inherit; /* i button non ereditano il font da soli → glielo dico */
+}
+/* compare in alto a destra quando è zoomato */
+body.is-zoomed .zoom-close {
+  display: block;
+  position: fixed;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 12;
+  font-size: 1.5rem;
+  font-weight: 400;
+  text-underline-offset: 0.2em;
+}
+
+/* i controlli sopra il velo scuro vanno in CHIARO, se no sono neri su nero */
+body.is-zoomed .zoom,
+body.is-zoomed .zoom-close {
+  color: var(--paper);
+}
+
+/* -------------------------------------------ARROWS------------------------------------------- */
+.arrow {
+  position: absolute;
+  top: 0;
+  bottom: 0; /* la freccia è alta quanto l'immagine → sensibile a ogni altezza */
+  display: flex;
+  align-items: center;
+  padding: 0 0.5rem;
+  opacity: 0;
+  transition: opacity 0.2s;
+  font-size: 2rem;
+}
+
+.arrow-left {
+  right: 100%; /* il bordo destro della freccia si aggancia al bordo SINISTRO dell'immagine → esce a sinistra */
+  margin-right: 0.75rem; /* stacco dall'immagine */
+}
+
+.arrow-right {
+  left: 100%; /* il bordo sinistro della freccia si aggancia al bordo DESTRO dell'immagine → esce a destra */
+  margin-left: 0.75rem;
+}
+
+.viewer:hover .arrow {
+  opacity: 1;
+} /* appaiono quando il mouse è sull'immagine */
+
+/* -------------------------------------------EXHIBITED WORKS------------------------------------------- */
+.work-relations:has(.ex-section) {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.ex-item,
+.ex-role,
+.ex-note {
+  margin: 0;
+}
+
+.ex-role {
+  font-weight: 500;
+}
+.ex-note {
+  margin-top: 0.25rem;
+}
+
+.work-relations a,
+.caption a,
+.links a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  transition: text-decoration-color 0.25s ease;
+}
+
+.work-relations a:hover,
+.caption a:hover,
+.links a:hover {
+  text-decoration-color: transparent;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 1rem 0 0;
+}
+
+/* -------------------------------------------FOOTER------------------------------------------- */
+/* stacco ragionevole per le pagine-opera: i 380px di base.css sono un valore
+   "da home" che qui spingeva il footer troppo giù, isolandolo in fondo. */
+footer {
+  margin-top: 8rem;
+}
+
+/* -------------------------------------------------------------------------RESPONSIVE----------------------------------------------------------------------------------- */
+
+/* -------------------------------------------MOBILE------------------------------------------- */
+@media (max-width: 600px) {
+  header:not(.hero) {
+    margin-bottom: 2rem;
+  }
+
+  article,
+  article:has(.work-relations) {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    align-items: start;
+  }
+
+  .caption {
+    margin-bottom: 3rem;
+  }
+
+  /* -------------.viewer nella home------------- */
+  .viewer img,
+  .viewer video {
+    max-width: 100%;
+  }
+
+  .viewer {
+    margin-bottom: 0.5rem;
+  }
+
+  .counter {
+    display: block; /* su mobile il contatore si vede */
+    margin-top: 0.5rem;
+  }
+
+  /* niente zoom su mobile (resta solo su desktop) */
+  .zoom {
+    display: none;
+  }
+
+  .arrow {
+    display: none;
+  }
+
+  /* -------------footer------------- */
+  footer {
+    margin-top: 8rem;
+  }
+}
+
+/* -------------------------------------------TABLET------------------------------------------- */
+@media (max-width: 768px) {
+  header:not(.hero) {
+    margin-bottom: 2rem;
+  }
+
+  article,
+  article:has(.work-relations) {
+    grid-template-columns: 1fr;
+    min-height: auto;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  .caption p,
+  .work-relations {
+    max-width: 100%;
+  }
+
+  .caption {
+    width: 100%;
+    margin-bottom: 3rem;
+  }
+
+  /* -------------.viewer nella home------------- */
+  .viewer img,
+  .viewer video {
+    max-width: 100%;
+  }
+
+  .viewer {
+    margin-bottom: 0.5rem;
+  }
+
+  .counter {
+    display: block; /* su mobile il contatore si vede */
+    margin-top: 0.5rem;
+  }
+
+  /* niente zoom su mobile (resta solo su desktop) */
+  .zoom {
+    display: none;
+  }
+
+  .arrow {
+    display: none;
+  }
+}

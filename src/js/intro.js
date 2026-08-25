@@ -2,13 +2,15 @@
 // Appena si apre: velo mattone con lo statement al centro; poi dissolvenza —
 // il colore se ne va, la copia dello statement scende al suo posto, e
 // compaiono lo statement vero, la tagline e l'immagine, uno dopo l'altro.
-// Si vede UNA volta a sessione e rispetta prefers-reduced-motion.
+// Si vede una volta per SCHEDA: finché la scheda resta aperta non si ripete
+// (ricarichi/navighi = niente entrance); chiudi la scheda e rientri = la rivedi.
+// Rispetta prefers-reduced-motion.
 (() => {
   const statement = document.querySelector(".statement");
   if (!statement) return; // non è la home: niente entrance
 
   const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (reduce || sessionStorage.getItem("introSeen")) return; // salta: già vista o animazioni ridotte
+  if (reduce || sessionStorage.getItem("introSeen")) return; // salta: già vista in questa scheda o animazioni ridotte
 
   sessionStorage.setItem("introSeen", "1");
   document.body.classList.add("is-intro"); // nasconde tagline / img / statement veri

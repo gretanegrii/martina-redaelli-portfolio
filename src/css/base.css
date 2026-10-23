@@ -98,6 +98,9 @@ figure {
 
 html {
   font-family: var(--font-main);
+  /* 16px fino a 1440px di larghezza, poi cresce piano: su monitor grandi testi, spazi e colonne
+     (tutto quello che è in rem) scalano insieme invece di restare minuscoli */
+  font-size: clamp(1rem, 0.8vw + 0.28rem, 1.75rem);
   margin: 20px;
   scroll-behavior: smooth;
 }

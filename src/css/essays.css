@@ -1,6 +1,6 @@
 /* -------------------------------------------LAYOUT------------------------------------------- */
 article {
-  max-width: 900px;
+  max-width: 56.25rem;
   margin-inline: auto;
 }
 
@@ -59,7 +59,7 @@ article p {
 /* -------------------------------------------IMMAGINI------------------------------------------- */
 figure {
   margin: 1.5rem 0;
-  max-width: 900px;
+  max-width: 56.25rem;
   margin-inline: auto;
 }
 
@@ -85,12 +85,12 @@ figcaption {
 /* la figura stringe sull'immagine, così la didascalia (left) si allinea a lei
    invece che al bordo della colonna larga */
 figure.portrait {
-  max-width: 500px;
+  max-width: 31.25rem;
 }
 
 figure.portrait img {
   width: 100%;
-  max-width: 500px;
+  max-width: 31.25rem;
   margin-inline: auto;
 }
 
@@ -180,4 +180,10 @@ article sup a::after {
   article p {
     margin-bottom: 1.5rem;
   }
+}
+
+
+/* gli indirizzi web lunghi della bibliografia vanno a capo invece di allargare la pagina sui telefoni stretti */
+.works-cited li {
+  overflow-wrap: anywhere;
 }

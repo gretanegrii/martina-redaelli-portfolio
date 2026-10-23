@@ -59,7 +59,7 @@ body.verso-destra {
 .caption p,
 .work-relations {
   font-size: 0.75rem;
-  max-width: 400px;
+  max-width: 25rem;
 }
 
 .spec {
@@ -72,7 +72,7 @@ body.verso-destra {
 /* -------------------------------------------VIEWER------------------------------------------- */
 .viewer img,
 .viewer video {
-  max-width: 600px;
+  max-width: 37.5rem;
   max-height: 80vh;
   display: none;
 }
@@ -382,6 +382,20 @@ footer {
     display: none;
   }
 
+  .arrow {
+    display: none;
+  }
+}
+
+
+/* tra 769 e 1000px l'immagine (fino a 600px) non stava più nella sua colonna e la freccia destra, che sta
+   fuori dall'immagine, usciva dalla pagina: qui l'immagine si adatta alla colonna e le frecce spariscono
+   (si naviga cliccando metà immagine, come già su tablet e telefono) */
+@media (max-width: 1000px) {
+  .viewer img,
+  .viewer video {
+    max-width: min(37.5rem, 100%);
+  }
   .arrow {
     display: none;
   }

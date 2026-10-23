@@ -519,7 +519,7 @@ body:has(.views input[value="grid"]:checked) figcaption {
 /* -------------------------------------------CONTACT------------------------------------------- */
 .contacts {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: auto minmax(0, 1fr); /* "1fr" da solo non scende sotto l'indirizzo email più lungo */
   column-gap: 1rem;
   row-gap: 0.5rem;
 }
@@ -536,6 +536,9 @@ body:has(.views input[value="grid"]:checked) figcaption {
 
 .contacts dd a {
   color: inherit;
+}
+.contacts dd {
+  overflow-wrap: anywhere; /* un'email lunga va a capo invece di uscire dallo schermo */
 }
 
 .cv-link a,
@@ -763,5 +766,18 @@ body.intro-done .intro-statement {
 
   main {
     margin-bottom: 2rem;
+  }
+}
+
+
+/* -------------------------------------------TELEFONI STRETTI------------------------------------------- */
+/* La barra dei filtri anno a fondo schermo (5 voci senza a-capo) a 320-380px usciva dallo schermo e le
+   ultime voci venivano tagliate. Da 390px in su non cambia niente (16px e 16px di margine come prima). */
+@media (max-width: 600px) {
+  .filters label {
+    font-size: min(1rem, 4.1vw);
+  }
+  #works[open] .filters {
+    padding-inline: max(0.5rem, min(1rem, calc(100vw - 365px)));
   }
 }

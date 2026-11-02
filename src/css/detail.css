@@ -338,8 +338,9 @@ footer {
   }
 }
 
-/* -------------------------------------------TABLET------------------------------------------- */
-@media (max-width: 768px) {
+/* -------------------------------------------TABLET / PORTATILE PICCOLO------------------------------------------- */
+/* da 1200px in giù testo e immagini stanno in una colonna sola, come su telefono (prima era da 768px) */
+@media (max-width: 1200px) {
   header:not(.hero) {
     margin-bottom: 2rem;
   }
@@ -388,15 +389,24 @@ footer {
 }
 
 
-/* tra 769 e 1000px l'immagine (fino a 600px) non stava più nella sua colonna e la freccia destra, che sta
-   fuori dall'immagine, usciva dalla pagina: qui l'immagine si adatta alla colonna e le frecce spariscono
-   (si naviga cliccando metà immagine, come già su tablet e telefono) */
-@media (max-width: 1000px) {
+/* da 1200px in giù l'immagine si adatta alla colonna (max 600px) e le frecce spariscono: stanno fuori
+   dall'immagine e in una colonna sola uscirebbero dalla pagina (si naviga cliccando metà immagine, come
+   già su tablet e telefono) */
+@media (max-width: 1200px) {
   .viewer img,
   .viewer video {
     max-width: min(37.5rem, 100%);
   }
   .arrow {
     display: none;
+  }
+}
+
+/* tra 769 e 1200px la pagina è a colonna sola ma lo schermo è ancora largo: didascalia e relazioni non
+   vanno a tutta larghezza (righe di 1100px non si leggono), restano larghe come l'immagine, a sinistra */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .caption,
+  .work-relations {
+    max-width: 37.5rem;
   }
 }
